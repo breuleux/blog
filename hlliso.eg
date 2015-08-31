@@ -1,0 +1,77 @@
+
+provide:
+   install
+
+regexp_numr = R```
+   {+d}, in "rR"
+   {+ in"A-Za-z0-9_"}
+   ?[".", {+ in "A-Za-z0-9_"}]
+```
+
+regexp_num = R```
+   {+ in "0-9_"}
+   ?[".", {+d}]
+   ?[in "eE", {? in "+-", + in "0-9_"}]
+```
+
+regexp_id = "[a-zA-Z$_](-?[a-zA-Z$_0-9])*"
+
+regexp_simpleop = "[+\\-*/~^<>=%&|?!@#.]+"
+regexp_wordop = '`[a-zA-Z$_0-9-]+`'
+regexp_op = '{regexp_simpleop}|{regexp_wordop}'
+
+
+eglang{hljs} = {
+
+   contains = {
+
+      {
+         class-name = .string
+         contains = {hljs.BACKSLASH_ESCAPE}
+         begin = '"'
+         end = '"'
+      }
+
+      {
+         class-name = .keyword
+         begin = '@{regexp_id}'
+      }
+
+      {
+         class-name = .literal
+         begin = '#{regexp_id}'
+      }
+
+      {
+         class-name = .comment
+         begin = ";;"
+         end = R"$"
+      }
+
+      {
+         class-name = .punctuation
+         begin = R"[(){}\[\],;:]"
+      }
+
+      {
+         class-name = .operator
+         begin = regexp_op
+      }
+
+      {
+         begin = regexp_id
+      }
+
+      {
+         class-name = .number
+         variants = {
+            {begin = regexp_numr}
+            {begin = regexp_num}
+         }
+      }
+
+   }
+}
+
+install{hljs} =
+   hljs.register-language{.liso, eglang}

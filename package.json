@@ -1,0 +1,43 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "description": "My blog.",
+  "dependencies": {
+    "autoprefixer": "^5.2.0",
+    "autoprefixer-core": "^5.2.1",
+    "earlgrey": ">= 0.0.1",
+    "earlgrey-runtime": ">= 0.0.3",
+    "engage": ">= 0.0.0",
+    "highlight.js": "^8.5.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "node-sass": "^3.2.0",
+    "postcss": "^5.0.2",
+    "quaint": ">= 0.0.2",
+    "quaint-earlgrey": ">= 0.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/breuleux/blog"
+  },
+  "author": "Olivier Breuleux",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "jspm": "^0.16.1"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "output/blog/lib"
+    },
+    "dependencies": {
+      "earlgrey-runtime": "npm:earlgrey-runtime@^0.0.10",
+      "lodash.throttle": "npm:lodash.throttle@^3.0.4",
+      "markdown": "npm:markdown@^0.5.0"
+    },
+    "devDependencies": {}
+  }
+}
