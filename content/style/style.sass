@@ -1,0 +1,262 @@
+
+@import url(http://fonts.googleapis.com/css?family=Mate+SC)
+@import url(http://fonts.googleapis.com/css?family=Open+Sans)
+@import url("hl-xcode.css")
+@import url("ornate.css")
+
+$main-width: 750px
+
+$k1: #183155
+$k1a: #2E486F
+
+$k2: #6F4C8B
+
+$kx: #933456
+
+$k4: #B6D8D3
+
+$kp1: #f5f5ff
+$kp2: #9175a8
+
+$font-size: 14pt
+
+.signature a
+  font-weight: bold
+
+.paper
+  margin-left: 10px
+
+.date:before
+  content: " - "
+.date
+  color: #aaa
+
+.github-image
+  margin-top: 9px
+  margin-left: 9px
+
+.project
+  margin-bottom: 20px
+  .project-title:hover
+    background-color: #ddd
+  .project-title
+    display: flex
+    align-items: center
+    background-color: #eee
+    padding: 5px
+    cursor: pointer
+    img
+      width: 200px
+      margin-right: 40px
+    a
+      font-size: 30pt
+      font-weight: bold
+      color: black
+  .project-description
+    display: block
+    padding: 5px
+
+body
+  font-family: 'Open Sans', sans-serif
+  max-width: $main-width
+  margin: auto
+  height: 100%
+  display: flex
+  flex-direction: column
+  color: #333
+  font-size: $font-size
+
+p, ul, ol
+  line-height: $font-size * 1.5
+
+li
+  padding-bottom: 10px
+
+ul.toc li
+  padding-bottom: 0px
+
+/* #foot
+/*   height: 100px
+
+a
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+
+.sidebyside
+  width: 100%
+  display: flex
+  flex-direction: row
+  > *
+    width: 50%
+
+pre
+  font-size: 12pt
+  background-color: $kp1
+  padding: 5px
+  border-left: 5px solid $kp2
+
+$ttsz: 140px
+$h1sz: 20px
+
+.intro
+  margin-top: 20px
+  margin-bottom: 30px
+  font-size: 16pt
+
+
+.title
+  position: relative
+.title:before
+  position: absolute
+  display: inline-block
+  left: -$ttsz/3 - 15px
+  bottom: 50%
+  margin-bottom: -$ttsz/2
+  height: $ttsz
+  width: $ttsz
+  /* background-color: $k1
+  background-color: $k4
+  border-radius: 50%
+  content: ""
+  z-index: -1
+
+.tagline
+  font-size: 20pt
+  font-style: italic
+  padding-bottom: 20px
+
+.seealso
+  margin-top: 20px
+  margin-left: 20px
+  max-width: 350px
+  a
+    font-weight: bold
+  ul
+    list-style-type: none
+    padding: 0px
+  li
+    padding: 0px
+    margin: 0px
+
+.seealso:before
+  font-weight: bold
+  font-size: 16pt
+  content: "Read more"
+
+h1
+  position: relative
+h1:before
+  position: absolute
+  display: inline-block
+  left: -$h1sz - 15px
+  bottom: 50%
+  margin-bottom: -$h1sz/2
+  height: $h1sz
+  width: $h1sz
+  background-color: #532D71
+  /* border-radius: 50%
+  color: white
+  content: ""
+
+.title
+  font-size: 40pt
+  font-weight: bold
+  margin-top: 20px
+  margin-bottom: 50px
+
+.title, h1, h2, h3
+  font-family: 'Mate SC', sans-serif
+
+.title, h1, h2, h3, b
+  color: black
+
+table
+  border: 2px solid black
+  border-collapse: collapse
+  td
+    padding-left: 5px
+    padding-right: 5px
+  th
+    padding-left: 5px
+    padding-right: 5px
+    color: white
+    background-color: black
+    text-align: left
+
+ul.toc
+  padding-left: 20px
+  list-style-type: none
+  ul
+    padding-left: 20px
+    list-style-type: none
+  a
+    /* position: relative
+    color: #000
+  a.selected
+    font-weight: bold
+  a.selected:before
+    position: absolute
+    left: 10px
+    content: "\25B6"
+
+ul.articles
+  list-style-type: none
+  padding-left: 0px
+  .postbit
+    padding: 5px
+    cursor: pointer
+    a
+      font-weight: bold
+      color: black
+  .postbit:hover
+    background-color: $kp1
+  .tagline
+    display: block
+    padding: 0px
+    margin-left: 30px
+    font-size: 14pt
+
+.signature
+  padding-top: 20px
+
+
+@media screen and (min-width: $main-width+300px)
+  #nav
+    display: flex
+    flex-direction: column
+    position: fixed
+    padding: 10px
+    left: 0px
+    top: 0px
+
+@media screen and (max-width: $main-width+300px)
+  #nav
+    display: flex
+    flex-direction: row
+    background-color: #eee
+    padding: 10px
+  #main
+    padding-left: 5px
+    padding-right: 5px
+  .title
+    margin: 0px
+    margin-left: -5px
+    margin-right: -5px
+    padding-left: 10px
+    padding-top: 20px
+    padding-bottom: 20px
+    background-color: $k4
+  .title:before
+    visibility: hidden
+  .tagline
+    padding-top: 30px
+  h1
+    padding-left: $h1sz+10
+  h1:before
+    left: 0px
+  #nav ul.toc
+    display: none
+  #nav .seealso
+    display: none
