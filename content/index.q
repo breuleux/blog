@@ -4,7 +4,7 @@ meta ::
   author = Olivier Breuleux
   template = plain
 
-ornate :: 121
+ornate :: 131
 
 [horb :: \text] => ornate L2+2L :: h2 % {text}
 

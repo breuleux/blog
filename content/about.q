@@ -7,13 +7,20 @@ meta ::
 div.title %
   About me
 
-;; store nav ::
-  github =>
-    img.github-image %
-      title = breuleux
-      src = {siteroot}assets/github.png
-      height = 32px
-      alt = breuleux on GitHub
+
+githubi =>
+  img %
+    title = breuleux
+    src = {siteroot}assets/github.png
+    height = 20pt
+    alt = breuleux on GitHub
+
+;;
+  img.github-image %
+    title = breuleux
+    src = {siteroot}assets/github.png
+    height = 16px
+    alt = breuleux on GitHub
   twitter =>
     img %
       title = @broolucks
@@ -28,11 +35,13 @@ github => https://github.com/breuleux
 I don't really like to say things about myself. So I won't.
 
 I do like to talk about the random projects I start, though. You can
-check them out on GitHub@@{github} or read about them here:
+check them out on [GitHub {githubi}]@@{github} or read about them here:
 
 
 [horb :: \text] => ornate L2+2L :: h2 % {text}
 
+
+horb :: current projects
 
 earlgrey => http://breuleux.github.io/earl-grey/
 
@@ -79,7 +88,7 @@ div.project %
     your workflow. So you can print actual tables, plots, and so on,
     inline.
 
-horb :: previous
+horb :: previous projects
 
 theano => http://deeplearning.net/software/theano/
 
