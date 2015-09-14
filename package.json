@@ -26,7 +26,8 @@
   },
   "jspm": {
     "directories": {
-      "baseURL": "output/blog/lib"
+      "baseURL": "content/lib",
+      "packages": "output/blog/lib/jspm_packages"
     },
     "dependencies": {
       "earlgrey-runtime": "npm:earlgrey-runtime@^0.0.10",
