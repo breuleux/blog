@@ -1,0 +1,77 @@
+
+@import util
+
+html
+  height: 100%
+
+body
+  @include column
+  font-family: 'Open Sans', sans-serif
+  font-size: $font-size
+  height: 100%
+  margin: 0px
+  color: #333
+
+#main-container
+  flex-grow: 1
+  #main
+    @include block
+
+@media screen and (min-width: $main-width+300px)
+  #nav
+    @include column
+    position: fixed
+    padding: 10px
+    left: 0px
+    top: 0px
+
+@media screen and (max-width: $main-width+300px)
+  #nav
+    @include row
+    background-color: #eee
+    padding: 10px
+  #main
+    padding-left: 5px
+    padding-right: 5px
+
+
+
+
+
+/* body
+/*   @include column
+/*   font-family: 'Open Sans', sans-serif
+/*   font-size: $font-size
+/*   height: 100%
+/*   margin: 0px
+
+/* #nav-container
+/*   background-color: #ddd
+/*   #nav
+/*     @include rownav
+/*     height: 100px
+
+/* #main-container
+/*   background-color: #eee
+/*   flex-grow: 1
+/*   #main
+/*     @include block
+
+/* #foot-container
+/*   background-color: #000
+/*   #foot
+/*     @include rownav
+/*     color: white
+/*     height: 200px
+
+
+/* body
+/*   font-family: 'Open Sans', sans-serif
+/*   max-width: $main-width
+/*   margin: auto
+/*   height: 100%
+/*   display: flex
+/*   flex-direction: column
+/*   color: #333
+/*   font-size: $font-size
+

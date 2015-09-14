@@ -1,8 +1,6 @@
 
 require:
    my-engage
-   my-quaint ->
-      create as qcreate
 
 opts = {
    hostname = "http://breuleux.net"

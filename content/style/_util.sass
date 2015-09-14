@@ -1,0 +1,35 @@
+
+$main-width: 750px
+$main-padding: 10px
+$font-size: 14pt
+
+$k1: #183155
+$k1a: #2E486F
+
+$k2: #6F4C8B
+
+$kx: #933456
+
+$k4: #B6D8D3
+
+$kp1: #f5f5ff
+$kp2: #9175a8
+
+@mixin block
+  margin: auto
+  max-width: $main-width + $main-padding * 2
+  padding-left: $main-padding
+  padding-right: $main-padding
+
+@mixin column
+  display: flex
+  flex-direction: column
+
+@mixin row
+  display: flex
+  flex-direction: row
+  align-items: center
+
+@mixin rownav
+  @include block
+  @include row

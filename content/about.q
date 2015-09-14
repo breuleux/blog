@@ -4,6 +4,8 @@ meta ::
   author = Olivier Breuleux
   template = plain
 
+resources :: about.css
+
 div.title %
   About me
 
