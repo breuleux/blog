@@ -13,6 +13,8 @@ html %
        rel = stylesheet
        type = text/css
        href = {siteroot}style/style.css
+    script %
+       src = {siteroot}lib/social-popup.js
     {
        incl = doc.meta.get{.include}??.raw{} or ""
        incl.split{R" *\n *"} each
