@@ -1,141 +1,17 @@
 
-require-macros:
-   engage ->
-      each!
-      task
-
 require:
-   engage as _e ->
-      Renamer, Engage, Write
-      task-function
-   quaint ->
-      create, tools
-   quaint-earlgrey
-   quaint-highlight
-   "./hleg" -> install as install-hleg
-   "./hlliso" -> install as install-hlliso
-   node-sass
-   postcss
-   autoprefixer-core
-   autoprefixer
-   "earlgrey/5" as eg
+   my-engage
+   my-quaint ->
+      create as qcreate
 
-create2{} =
-   siteroot = "/blog/"
-   q = create with
-      quaint-earlgrey{sandbox = global}
-      quaint-highlight{
-         ;; default = .earlgrey
-         install-plugins{hljs} =
-            install-hleg{hljs}
-            install-hlliso{hljs}
-      }
-      {@} ->
-         @register-macros with {
-            ornate{engine, pattern >> pattern.raw{}, body} =
-               div.ornate %
-                  pattern each
-                     "+" -> engine.gen{body}
-                     letter ->
-                        div % class = 'deco{letter}'
-         }
-         @register-rule with {
-            "\\label @@@ \\url"{engine, {=> label, => url}} =
-               a %
-                  href = siteroot +
-                     match url.raw{}:
-                        R"\."? x -> x
-                        x -> x + ".html"
-                  engine.gen{label}
-            "\\maybe\\label @@@ image : \\url"{engine, {=> label, => url}} =
-               img %
-                  src = siteroot + "assets/" +
-                     match url.raw{}:
-                        R"\."? x -> x
-                        x -> x + ".png"
-                  alt = engine.gen{label}
-         }
-         @setenv with {
-            = siteroot
-         }
-
-task finalize-quaint{file, env = {=}} =
-   tpl{q} =
-      t = q.documents.meta.get{.template}??.raw{}
-      q.documents.meta.set{.template, null}
-      t
-   q0 = create2{}
-   q0.setenv{env}
-   var res = q0.translate{file.text, .html}
-   var template = tpl{q0}
-   while template:
-      t = @get{'./template/{template}.q'}
-      q = create2{}
-      q.documents = q0.documents
-      ;; q0.documents.meta.entries{} each {k, v} when k !== .template ->
-      ;;    q.documents.meta.set{k, v}
-      q.setenv{.body, raw % res}
-      q.setenv{env}
-      res = q.translate{t.text, .html}
-      template = tpl{q}
-   m = object with q0.documents.meta.entries{} each kv -> kv
-   m.contents = res
-   m
-
-task t-idx{} =
-   articles =
-      @get{"./content"}.find{"**/*.q"} each
-         file when file.path !== "content/index.q" ->
-            m = finalize-quaint{file}
-            m &: {
-               path = file.path
-               url = @rename{file, extension = ".html"}.replace{R"^output/", "/"}
-               contents = null
-            }
-            ;; {
-            ;;    finalize-quaint{file} as {
-            ;;       => title = null
-            ;;       => author = null
-            ;;    }
-            ;;    path = file.path
-            ;;    url = @rename{file, extension = ".html"}.replace{R"^output/", "/"}
-            ;; }
-   index-file = @get{"content/index.q"}
-   res = finalize-quaint{index-file, {= articles}}
-   Write{@rename{index-file, extension = ".html"}, res.contents}
-
-task t-main{} =
-   c = @get{"./content"}
-
-   assets =
-      {"png", "svg", "jpg", "json", "css", "js"} each ext ->
-         c.find{'**/*.{ext}'} each! file ->
-            Write{@rename{file}, file.contents}
-
-   sasses =
-      c.find{'**/*.sass'} each! file ->
-         res = node-sass.render-sync{data = file.text, indented-syntax = true}
-         css = [await postcss{{autoprefixer}}.process{res.css}].css
-         Write{@rename{file, extension = ".css"}, css}
-
-   egs =
-      c.find{'**/*.eg'} each! file ->
-         res = eg.compile{file.text, {path = file.path, es5 = true, source-map = true}}
-         {Write{@rename{file, extension = ".js"}, res.code}
-          Write{@rename{file, extension = ".js.map"}, res.map}}
-
-   quaints =
-      c.find{"**/*.q"} each! file ->
-         if file.path !== "content/index.q":
-            res = finalize-quaint{file}
-            Write{@rename{file, extension = ".html"}, res.contents}
-
-   {assets, sasses, egs, quaints, t-idx{}}
-
-Engage{t-main, opts}.run{} where opts = {
-   debounce = 100
-   rename = Renamer{from = "./content", to = "./output/blog/"}
-   read-only = {"./content"}
-   error{e} =
-      print e.stack
+opts = {
+   hostname = "http://breuleux.net"
+   root = "/blog/"
+   assets-root = "/blog/assets/"
+   default-language = .earlgrey
+   default-extension = ".html"
+   default-image-extension = ".png"
+   create{} = qcreate{opts}
 }
+
+my-engage{opts}.start{}
