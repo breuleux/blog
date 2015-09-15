@@ -6,9 +6,11 @@
     "earlgrey": ">= 0.0.1",
     "earlgrey-runtime": ">= 0.0.3",
     "engage": ">= 0.0.0",
+    "gulp": "^3.9.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "my-quaint": ">= 0.0.0",
+    "node-static": "^0.7.7",
     "urlencode": "^1.1.0"
   },
   "scripts": {
