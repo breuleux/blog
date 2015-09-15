@@ -11,9 +11,8 @@ meta ::
   tags = {O-Expressions, S-expressions, Liso, Programming Languages}
   comments = true
   list = true
-  include =
-    /lib/jspm_packages/system.js
-    /lib/config.js
+
+resources :: toc!
 
 
 css ::
@@ -729,9 +728,6 @@ store nav ::
     * Liso source @@ https://github.com/breuleux/liso
     * [Earl Grey @@ http://breuleux.github.io/earl-grey/],
       designed later from the same principles.
-
-js ::
-  System.import("/blog/lib/toc.js");
 
 point => https://github.com/breuleux/liso/blob/master/liso/examples/point.liso
 source => https://github.com/breuleux/liso
