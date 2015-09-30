@@ -8,7 +8,7 @@
     "gulp": "^3.9.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
-    "@breuleux/engage-config": ">= 0.0.2",
+    "@breuleux/engage-config": ">= 0.0.3",
     "node-static": "^0.7.7",
     "urlencode": "^1.1.0"
   },
@@ -30,11 +30,7 @@
       "baseURL": "content/lib",
       "packages": "output/blog/lib/jspm_packages"
     },
-    "dependencies": {
-      "earlgrey-runtime": "npm:earlgrey-runtime@^0.0.10",
-      "lodash.throttle": "npm:lodash.throttle@^3.0.4",
-      "markdown": "npm:markdown@^0.5.0"
-    },
+    "dependencies": {},
     "devDependencies": {}
   }
 }
