@@ -1,6 +1,7 @@
 
+template :: default
+
 meta ::
-  template = default
   id = 18
   title = O-expressions
   tagline = An alternative to s-expressions for extensible syntax

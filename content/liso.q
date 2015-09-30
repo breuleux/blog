@@ -1,6 +1,7 @@
 
+template :: default
+
 meta ::
-  template = default
   id = 19
   title = LISO
   tagline = An operator-based syntax for Racket programs

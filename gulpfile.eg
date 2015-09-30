@@ -26,6 +26,6 @@ task serve:
    http.create-server{f}.listen{opts.server-port} where f{req, res} =
       req.add-listener{.end, f}.resume{} where f{} =
          s.serve{req, res}
-         print 'Listening on port {opts.server-port}'
+   print 'Listening on port {opts.server-port}'
 
 task default < {make, serve}

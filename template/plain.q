@@ -1,5 +1,5 @@
 
-meta :: template = nav
+template :: nav
 
 div#main-container.container %
   div#main %

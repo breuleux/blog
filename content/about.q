@@ -1,8 +1,9 @@
 
+template :: plain
+
 meta ::
   title = About me
   author = Olivier Breuleux
-  template = plain
 
 resources :: about.css
 

@@ -1,8 +1,9 @@
 
+template :: plain
+
 meta ::
   title = Olivier Breuleux's blog
   author = Olivier Breuleux
-  template = plain
 
 resources :: index.css
 
@@ -28,8 +29,8 @@ horb :: articles
         a %
           href = article.url
           article.title??.raw{} or "Untitled"
-        .date % moment{article.date??.raw{}, "YYYY/MM/DD"}.format{"MM/YYYY"}
-        .tagline % engine.gen{article.tagline}
+        span.date % moment{article.date??.raw{}, "YYYY/MM/DD"}.format{"MM/YYYY"}
+        span.tagline % engine.gen{article.tagline}
 }
 
 ornate :: 1
