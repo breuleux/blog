@@ -13,7 +13,7 @@ meta ::
   comments = true
   list = true
 
-resources :: toc!
+resources :: toc-scroll.js
 
 
 css ::
