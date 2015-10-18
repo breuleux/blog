@@ -46,7 +46,7 @@ check them out on [GitHub {githubi}]@@{github} or read about them here:
 
 horb :: current projects
 
-earlgrey => http://breuleux.github.io/earl-grey/
+earlgrey => https://breuleux.github.io/earl-grey/
 
 div.project %
   .project-title %
@@ -54,14 +54,14 @@ div.project %
     @@@image:earlgrey.svg
     Earl Grey @@ {earlgrey}
   .project-description %
-    __ Earl Grey is a new programming language.
+    __ Earl Grey is a new programming language. @@ {earlgrey}
     It compiles to JavaScript and has a lot of neat features such as
     pattern matching and macros. Earl Grey is my language of choice
     for all my new programming projects, so even if nobody else uses
     it, well, I do.
 
 
-quaint => http://breuleux.net/tryquaint
+quaint => https://breuleux.github.io/quaint
 
 div.project %
   .project-title %
@@ -69,7 +69,7 @@ div.project %
     @@@image:quaint.png
     Quaint @@ {quaint}
   .project-description %
-    __ Quaint is a new markup language.
+    __ Quaint is a new markup language. @@ {quaint}
     It is simple and looks a bit like Markdown, but it is more regular
     and very easy to extend. It is possible to write macros in Quaint
     to simplify repetitive operations. Quaint is written in [Earl
@@ -84,7 +84,7 @@ div.project %
     @@@image:terminus.png
     Terminus @@ {terminus}
   .project-description %
-    __ Terminus is an HTML terminal.
+    __ Terminus is an HTML terminal. @@ {terminus}
     It works just like a normal VT100 terminal, the escape codes work,
     you can run emacs or vi inside it if you want. Terminus's
     distinguishing feature, though, is that you can embed HTML inside
@@ -101,7 +101,7 @@ div.project %
     @@@image:theano.png
     Theano @@ {theano}
   .project-description %
-    __ Theano is an arithmetic expression compiler.
+    __ Theano is an arithmetic expression compiler. @@ {theano}
     It is a Python package which can do symbolic differentiation and
     analysis of arithmetic expressions, and then compile them to
     efficient specialized code to run on CPU or GPU. It is mainly used
@@ -113,7 +113,7 @@ div.project %
 
 horb :: papers
 
-I have also published a couple papers:
+Selected publications (or maybe that's all of them, who knows):
 
 fpcdpaper =>
   http://www.iro.umontreal.ca/\~lisa/pointeurs/breuleux+bengio_nc2011.pdf
@@ -142,7 +142,8 @@ horb :: contact me
 myemail => breuleux@gmail.com
 
 You can send me email at
-[{myemail} @@ mailto:{myemail}].
+[{myemail} @@ mailto:{myemail}]
+and maybe I'll even read it!
 
 
 ornate :: 1
