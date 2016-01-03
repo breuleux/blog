@@ -22,7 +22,7 @@ task make:
    engage-config{opts}.start{}
 
 task serve:
-   s = new node-static.Server{"./output"}
+   s = new node-static.Server{"./output", {cache = false}}
    http.create-server{f}.listen{opts.server-port} where f{req, res} =
       req.add-listener{.end, f}.resume{} where f{} =
          s.serve{req, res}
