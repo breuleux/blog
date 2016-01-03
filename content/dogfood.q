@@ -5,59 +5,63 @@ meta ::
   id = 21
   title = The taste of dog food
   tagline =
-    Or the stress and elation of using a programming language you
-    designed yourself.
+    On using a programming language you designed yourself.
   author = Olivier Breuleux
   date = 2015/08/31
   language = English
   category = Programming
   tags = {O-Expressions, S-expressions, Earl Grey, Programming Languages}
   comments = false
-  list = true
+  list = false
 
 
 __[$$$As basically nobody knows], I have been designing a new
-programming language called [Earl Grey]@@{earlgrey}. It is quite neat,
-or at least I think it is (I imagine I am no different from a mother
-believing that her child is the sweetest). Nonetheless, it makes for a
-very interesting experience, and that's what I am going to talk about
-here.
+programming language called [Earl Grey]@@{earlgrey}. I have also been
+using it intensively, to the point that virtually all my programming
+projects at the moment involve my language. It is an... interesting
+experience, to say the least, and that experience is what I am going
+to write about here.
 
 
-In a sense, new programming languages stem from the idea that you
-shouldn't have to adapt yourself to your tools and, instead, the tools
-should be adapted to you. You would like it better if a language
-worked differently, and so you make one that does. It is not always a
-good investment: oftentimes it is like spending two hours crafting a
-machine that will save you a minute for every year you have left to
-live. It is overall a loss. Perhaps you can be lucky and have other
-people use it. That would be validating, but it is not something you
-can often expect. Or perhaps you enjoy having made a machine, even if
-it didn't save you time after all.
+Some people adapt to the tools that are available. Others believe that
+they should not have to, and the tools should be adapted to
+them. Programming language designers typically belong to the second
+group: they would prefer the languages they know to be different, and
+so they make new ones that do. It is not always a good
+investment. First because features that sound good in your head may
+not work all that well in practice. Second because most new languages
+take more effort than the value they add, a bit like spending a
+hundred dollars on a machine that will save a penny a year. Perhaps
+you can be lucky and get a decent number of people to use your
+language, but this isn't a realistic expectation unless you are a
+large company and can buy your way into success. Perhaps there is
+something in your design that's a publishable contribution to the
+field. Or it may simply be that you enjoy the challenge.
 
 
 In my case I wanted to create a language that I could use for scripts,
 web applications and any new projects I may decide to put my mind
 to. My bet was that I would spend less time making it than I would
 save using it, and thus even if the language had no success at all
-outside of my own use, it would still have been worth making. It is, I
-realize, a strange mixture of ambition and lack thereof, to want to
-make a language for oneself with no expectations of outside success
-(although I've always had some hopes).
+outside of my own use, it would still have been worth making. You
+could say it is a rationalization: if I really want to make my own
+language, but cannot expect many people, if anyone at all, to adopt
+it, then I need the work to make up for more of my own work.
 
 
 That did entail some sacrifices to my vision of a perfect language. I
 decided to target JavaScript, for one, which is not a language I
 appreciate very much, but because of its ubiquity it was clearly the
-most useful target. I did not want to change its semantics too much
-either, because I wanted to be able to interoperate smoothly with the
-node ecosystem: making a language is one thing, making up a whole
-ecosystem and thousands of packages is quite another. These steps
-would ensure that I could use my language productively and even
+most useful target. I did not want to change its semantics too
+radically either, because I wanted to be able to interoperate smoothly
+with the node ecosystem: making a language is one thing, making up a
+whole ecosystem and thousands of packages is quite another. These
+steps would ensure that I could use my language productively and even
 publish new packages written in Earl Grey but which could be imported
-from JavaScript. Pragmatic choices.
+from JavaScript. Pragmatism, you see.
 
-So let me tell the story of Earl Grey as it unfolded.
+
+So let me tell the story of Earl Grey.
 
 
 = Bootstrapping
@@ -71,16 +75,18 @@ Racket which I called LISO@@@liso.
 So I wrote the simplest JavaScript code generator I could in LISO for
 a small subset of my language (one without significant indent and only
 a few essential operators like arithmetic, assignment and
-lambda). Once it worked, I rewrote it in that subset. Ta-daa! The
-compiler could compile itself. Earl Grey (though, I think I was
-calling it teacup at the time) was self-hosting.
+lambda). Once it worked, I rewrote it in that subset. And then, would
+you look at that, the compiler could compile itself. Earl Grey
+(though, I think I was calling it teacup at the time) was
+self-hosting.
 
 The main advantage of a self-hosting compiler, I find, is that it
 instantly becomes a language's main application and a rather thorough
-test of its correctness. More importantly, though, as you work on it,
-you are forced to deal with the language you have created. You have to
-experience its flaws, which is good since you are in a great position
-to fix them as soon as they become evident.
+test of its correctness. More importantly, though, as you work and
+improve on the compiler, you are forced to deal with the language you
+have created. You have to experience its flaws, which is good since
+you are in a great position to fix them as soon as they become
+evident.
 
 You also have to experience its lack of tooling.
 
@@ -97,17 +103,17 @@ on white text, or white on black, or whatever fancy colors you choose
 to use by default, like turquoise on burgundy or whatever. Not many
 people are comfortable coding in such an environment.
 
-It's not necessarily a pressing matter if you are coding your language
-in an established language like, say, C++, which has plenty of tools,
-but as I mentioned, I was now making Earl Grey in Earl Grey. I needed
-_something. It was a good thing that I'd been toying with language
-design a lot before Earl Grey, and I had once designed an Emacs mode
-for an old attempt. It took me a day or two, but I managed to adapt it
-to my new vision. That code is still filthy, filthy, filthy, by the
-way.
+It's not necessarily a pressing matter if you are implementing your
+language in an established language like, say, C++, which has plenty
+of tools, but as I mentioned, I was now making Earl Grey in Earl
+Grey. I needed _something. It was a good thing that I'd been toying
+with language design a lot before Earl Grey, and I had once designed
+an Emacs mode for an old attempt. It took me a day or two, but I
+managed to adapt it to my new vision. That code was, and still is,
+very filthy, but it works.
 
-Besides editor support, there is of course the issue of errors to
-tackle. There is nothing more frustrating than errors you cannot
+Besides editor support, there is of course the issue of error
+reporting. There is nothing more frustrating than errors you cannot
 understand, or cannot trace. Unless you take good care to trace each
 symbol in the original source code to the corresponding generated
 code, the relationship between source and error will inevitably be
