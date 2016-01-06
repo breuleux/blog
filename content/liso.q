@@ -20,6 +20,9 @@ css ::
     padding: 10px;
     border: 1px solid #aaa;
   }
+  .cmptable0 table {
+    font-size: 20px;
+  }
 
 
 = O-expressions
@@ -99,7 +102,8 @@ div.sidebyside %
                       (odd? (- n 1)))))
       (even? 30))
 
-Liso on the left, equivalent s-expression on the right.
+Liso on the left, equivalent s-expression on the right (top and bottom
+if you are on mobile).
 
 
 == Translation rules

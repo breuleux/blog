@@ -3,10 +3,11 @@
         "root": "template"
     },
     "plugins": {
-        "@breuleux/quaint-my-utils": true,
-        "earlgrey": {
+        "@breuleux/quaint-my-utils": {
+            "defaultLanguage": null,
+            "highlightTheme": "xcode"
         },
-        "highlight": {
+        "earlgrey": {
         },
         "disqus": {
             "shortname": "breuleux",
@@ -20,10 +21,15 @@
                 "body": "g:Open Sans",
                 "title": "g:Mate SC"
             },
+            "widths": {
+                "body": "800px"
+            },
             "backgrounds": {
                 "body": "#fff",
                 "nav": "#fff",
                 "table": "#fff",
+                "table-odd": "#fff",
+                "table-even": "#fff",
                 "table-header": "#000"
             },
             "extra": "style/blog.sass"
