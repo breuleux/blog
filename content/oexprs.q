@@ -2,7 +2,7 @@
 template :: default
 
 meta ::
-  id = 18
+  id = breuleux-blog-18
   title = O-expressions
   tagline = An alternative to s-expressions for extensible syntax
   author = Olivier Breuleux

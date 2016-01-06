@@ -1,6 +1,37 @@
 
 template :: nav
 
+div#title-container %
+  div#title %
+    div.title % meta :: title
+
+div#main-container.container %
+  div#main %
+    div.tagline % [meta :: tagline] !! []
+    {body}
+    div.signature %
+       [meta :: author]@@@about {
+          require: moment
+          date = moment{x, "YYYY/MM/DD"} where
+             x = doc.meta.get{"date"}??.raw{}
+          if date.is-valid{}:
+             span.date % date.format{"MMMM DD, YYYY"}
+          else:
+             ""
+       }
+
+    share ::
+      facebook
+      twitter
+      google+
+      reddit
+      email
+
+    disqus ::
+
+
+;; [
+
 div#title-container.container %
   div#title %
     div.title % meta :: title
@@ -65,3 +96,4 @@ div#main-container.container %
 
     js :: configurePopups();
 
+]

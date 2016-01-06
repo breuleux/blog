@@ -1,0 +1,47 @@
+{
+    "templates": {
+        "root": "template"
+    },
+    "plugins": {
+        "@breuleux/quaint-my-utils": true,
+        "earlgrey": {
+        },
+        "highlight": {
+        },
+        "disqus": {
+            "shortname": "breuleux",
+            "idField": "id"
+        },
+        "share-buttons": {
+        },
+        "look-nice": {
+            "useNav": true,
+            "fonts": {
+                "body": "g:Open Sans",
+                "title": "g:Mate SC"
+            },
+            "backgrounds": {
+                "body": "#fff",
+                "nav": "#fff",
+                "table": "#fff",
+                "table-header": "#000"
+            },
+            "extra": "style/blog.sass"
+       }
+    },
+    "contentRoot": "content",
+    "output": "out",
+    "resources": {
+        "root": "resources",
+        "files": {
+        }
+    },
+    "server": {
+        "startPage": "index.html"
+    },
+    "files": ["assets"],
+    "sources": "**/*.q",
+    "hostname": "http://breuleux.net",
+    "siteRoot": "blog/",
+    "saveMeta": "content/meta.json"
+}

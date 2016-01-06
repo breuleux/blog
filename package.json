@@ -8,9 +8,7 @@
     "gulp": "^3.9.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
-    "@breuleux/engage-config": ">= 0.0.3",
-    "node-static": "^0.7.7",
-    "urlencode": "^1.1.0"
+    "@breuleux/quaint-my-utils": ">= 0.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

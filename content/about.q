@@ -1,20 +1,14 @@
 
-template :: plain
+template :: title
 
 meta ::
   title = About me
   author = Olivier Breuleux
 
-resources :: about.css
-
-div.title %
-  About me
-
-
 githubi =>
   img %
     title = breuleux
-    src = {siteroot}assets/github.png
+    src = {documents.meta.getRaw("siteRoot")}assets/github.png
     height = 20pt
     alt = breuleux on GitHub
 

@@ -1,19 +1,15 @@
 
-template :: boilerplate
+template :: @minimal
 
 logo =>
   img %
-    src = {siteroot}assets/home.svg
+    src = {documents.meta.getRaw{"siteRoot"}}assets/home.svg
     height = 70px
     alt = Olivier Breuleux's blog
 
-div#nav-container.container %
+div#nav-container %
   div#nav %
-    div #logo % {logo} @@ {siteroot}index.html
+    div #logo % {logo} @@@ index
     store nav :: dump!
 
 {body}
-
-div#foot-container.container %
-  div#foot %
-    .footlink % []

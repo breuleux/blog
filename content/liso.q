@@ -2,7 +2,7 @@
 template :: default
 
 meta ::
-  id = 19
+  id = breuleux-blog-19
   title = LISO
   tagline = An operator-based syntax for Racket programs
   author = Olivier Breuleux
@@ -12,8 +12,6 @@ meta ::
   tags = {O-Expressions, S-expressions, Liso, Programming Languages}
   comments = true
   list = true
-
-resources :: toc-scroll.js
 
 
 css ::
