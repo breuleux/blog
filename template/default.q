@@ -29,4 +29,5 @@ div#main-container.container %
 
     ornate :: 1
 
-    disqus ::
+    meta::comments ??
+      disqus ::

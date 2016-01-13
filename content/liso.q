@@ -10,8 +10,8 @@ meta ::
   language = English
   category = Programming
   tags = {O-Expressions, S-expressions, Liso, Programming Languages}
-  comments = true
-  list = true
+  comments: true
+  list: true
 
 
 css ::

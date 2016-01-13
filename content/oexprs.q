@@ -10,8 +10,8 @@ meta ::
   language = English
   category = Programming
   tags = {O-Expressions, S-expressions, Programming Languages}
-  comments = true
-  list = true
+  comments: true
+  list: true
 
 __[Why do people like Lisp?] I mean, it looks weird, doesn't it? Countless
 backronyms were designed to mock its syntax: "Lost In a Sea of
