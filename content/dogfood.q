@@ -5,14 +5,14 @@ meta ::
   id = 8829cb0e-b596-11e5-a523-175f580c517c
   title = The taste of dog food
   tagline =
-    On using a programming language you designed yourself.
+    \[DRAFT\] On using a programming language you designed yourself.
   author = Olivier Breuleux
-  date = 2016/01/09
+  date = 2016/01/13
   language = English
   category = Programming
   tags = {O-Expressions, S-expressions, Earl Grey, Programming Languages}
-  comments = false
-  list = false
+  comments: true
+  list: false
 
 
 __[$$$As... very few people know], for the past few years I have been
@@ -120,7 +120,7 @@ smooth interoperation, make sure that I could easily use any existing
 JavaScript package in Earl Grey, and that JavaScript users could
 easily import packages written in Earl Grey. These are the compromises
 I knew I had to make so that I could be certain I would be able to use
-my own language productively. Not fun, but you know. Pragmatism.
+my own language productively.
 
 Even with these compromises, the tooling parts of the ecosystem remain
 an issue. To improve their productivity, people smother their
@@ -133,32 +133,15 @@ turquoise on burgundy). No annotations, automatic completion, no
 linting... not many people are comfortable coding in such an
 environment.
 
-I made an Emacs mode to highlight my language, since that is what I
-used.
+So I wrote an Emacs mode to highlight my language, since that is the
+editor I use. But you can see how designing a new language is an
+isolating force: I don't have Vim syntax definitions, so I can't use
+that editor productively. I didn't have Atom definitions until someone
+helpfully [wrote some]@@{egatom}. Thus there are a lot of interesting
+tools, editors and toys that are basically out of reach until I or
+someone equally motivated addresses the issue.
 
-
-
-
-At this point I had no choice but to compromise. I couldn't afford to
-reinvent too many wheels.
-
-Now... I didn't care much about implementing low level details like
-garbage collection. I cared more about metaprogramming, macro systems
-and productivity features like pattern matching, which meant compiling
-to an existing high level language was the natural choice. Remained
-the decision of which one to target. Ideally I would have gone with
-Racket, which has all the features I need, support for custom
-languages, and isn't very opinionated (I did make one prototype called
-LISO@@@liso).
-
-On the other hand, though, Racket does not have a _large
-ecosystem. That is why, in the end, I decided to target JavaScript:
-because it is ubiquitous, and it has an immense ecosystem, which I
-didn't want to have to write myself. That is also the reason for not
-changing JavaScript's semantics significantly: I had to ensure smooth
-interoperation, make sure that I could easily use any existing
-JavaScript package in Earl Grey, and that JavaScript users could
-easily import packages written in Earl Grey. Pragmatism, you see.
+egatom => https://atom.io/packages/language-earl-grey
 
 
 == Bootstrapping
@@ -166,100 +149,92 @@ easily import packages written in Earl Grey. Pragmatism, you see.
 
 Or: what worth is a language that doesn't compile itself? Worthless,
 that's what! The height of _chic for a programming language is for its
-compiler to be self-hosting. There are advantages to the strategy: the
-compiler instantly becomes the language's main application and a
-rather thorough test of its correctness. More importantly, though, as
-you work and improve on the compiler, you are forced to deal with the
-language you have created. You have to experience its flaws, which is
-good since you are in a great position to fix them as soon as they
-become evident. Plus, you will naturally end up adapting the language
-so that it is good at writing compilers, at which point it is
-practically going to write itself.
+compiler to be self-hosting. There are advantages to the strategy: a
+compiler is often a large and complex application, so it is a good,
+thorough test of the language's ability. It also forces you to deal
+with the language you have created from the outset. You have to
+experience its flaws, which is good since you are in a great position
+to fix them as soon as they become evident. Plus, you will naturally
+end up adapting the language so that it is good at writing compilers,
+at which point it is practically going to write itself.
 
-The process by which I bootstrapped Earl Grey was kind of contrived. I
-had already been dabbing in programming language design for a while
-before this. I made a language prototype that compiled to Python,
-dubbed Unholy Grail. Then I made an alternative syntax for
-s-expressions called [o-expressions]@@@oexprs and an implementation of
-them in Racket which I called LISO@@@liso. That is what I used to make
-the first prototype compiler, only using a subset of the syntax and
-features that one could find in both Racket and JavaScript. Before
-long I had this subset well supported and could bootstrap the entire
-thing using node, cutting out the original system.
+A simple way to bootstrap a new language (let's call it X) is to pick
+a small, simple, but sufficiently powerful subset of it that you know
+isn't going to change (much), and use this for the bootstrap process
+(let's call the subset mini-X). For instance, I had if/then/else in
+mini Earl Grey, but no pattern matching, nor macros or significant
+indent and other features I planned but didn't need immediately. It is
+probable that mini-X has significant overlap (possibly _perfect
+overlap) with an existing programming language Y, in which case you
+should use Y to implement the first version of the compiler. Once you
+can successfully and correctly compile the subset you chose, which
+shouldn't be more than a few hundred lines, you have a compiler for
+mini-X, written in Y. Then you translate the Y code to mini-X, which
+should be easy, or trivial if you took care to avoid the advanced Y
+features that aren't in mini-X. Now you can compile the mini-X
+compiler, use it to compile itself a few times to make sure it isn't
+bugged, and you don't need Y any more. I could write a full post about
+this process (I probably will).
 
-And thus a new language was born. And it was naked.
+A last note for this section: [__ error reporting is so, so
+important.] If there is anything you must work on first, this is
+it. When an error occurs, you need to know what went wrong and most
+importantly _where the error is before you can do anything about it.
+You can't afford to spend hours hunting something down that the
+machine could find for you. I did this half correctly: I took good
+care of tracking the location of code tokens all through parsing and
+macro expansion, so syntax errors would be easy to debug. Then I knew
+I had to implement proper source maps (maps that retrace positions in
+Earl Grey's source code from positions in the generated JavaScript),
+but I was too lazy to learn how they worked. It was actually fine most
+of the time, but I still got bit a few times by hard-to-find errors,
+which is always incredibly frustrating. That time adds up, and so does
+the frustration. I got around to it at last, and it's been better.
 
-
-== Tooling
-
-
-Languages don't exist in isolation, they come with a whole
-menagerie. Editors, development environments, debuggers, and so
-on. They cover them in makeup to highlight their features with every
-color in the rainbow, point out errors here and there, helpfully
-complete your thoughts, and so on, and so forth. But when a new
-language is birthed, it has nothing of this. It is naked, black on
-white, or white on black, or whatever fancy colors you choose to use
-by default, like turquoise on burgundy. No annotations, automatic
-completion, no linting... not many people are comfortable coding in
-such an environment.
-
-It's not necessarily a pressing matter if you are implementing your
-language in an established language like, say, C++, which has plenty
-of tools. Alas, I was writing Earl Grey in Earl Grey. I needed
-_something. Thankfully my needs are limited: some Emacs Lisp to
-highlight the features I needed and I was pretty much
-set. Nonetheless, there is something to be said about all the tools
-one has to either remake or forfeit because they cannot be abstracted
-from a language to another.
-
-Truth is, support systems for programming languages are
-_immense. Languages are supported by packages and libraries, by syntax
-highlighting, IDE support, debuggers, online documentation,
-communities on sites such as StackOverflow, paid support, and so
-on. Brand new languages have _nothing. They can, as I have done, play
-nice with existing ecosystems so that they can use another language's
-packages and libraries. Source map support can help too, with some
-editors and debuggers. Still, people will only use languages that
-cater to their needs, and many people demand a lot (not that they
-aren't entitled to). A language designer will put up with whatever
-they make, but it is still an isolating force: all these editors, all
-these toys, out of reach.
+But even now I have issues with errors in the boilerplate code of some
+macros because they don't track location information properly, and I
+ran into difficulties attempting to fix the problem because it breaks
+in too many places. You just _have to get this right the first
+time. It's boring, it's easy to neglect, but if you don't do it, it
+will bite you in the ass, it's inevitable.
 
 
 == Evolution
 
 
-So I had a language and a rudiment of editor support to help me use
-it. With enough determination, that ought to be plenty.
+So I had an initial implementation and a rudiment of editor support to
+help me use it. With enough determination, that ought to be plenty to
+get going.
 
 Once the basics are set up, the first weeks of language development
-are always blissful. New feature after new feature is implemented,
-each of them making the compiler simpler or more beautiful. If code
-seems forced or inelegant, that can be addressed with clever new
-structures. Keywords and operators themselves can be changed and
-adapted. I added significant indent, cleaned out all braces, and it
-was great. I added pattern matching, replaced countless if/then/else
-statements, and it was great also. These are good times, times where
-you never have to fight against the language, because you have
-complete dominion over it, it cannot fight you, it has to bend to your
-will. Frustration turns to elation as you spin a Feature out of it.
+are blissful. New feature after new feature is implemented, each of
+them making the compiler simpler or more beautiful. If code seems
+forced or inelegant, that can be addressed with clever new
+features. New keywords and operators can be added or tweaked. I added
+significant indent at some point, cleaned out all braces, and it felt
+great. I added pattern matching, replaced countless if/then/else
+statements, and it felt great also. These are good times. You never
+have to fight against the language, because you have complete dominion
+over it, it cannot fight you, it has to bend to your will. Frustration
+turns to elation as you spin a Feature out of it.
 
 But after a while, the language will turn into "good enough". It has
 to, in order to be worthwhile. That's when you start developing other
-projects using it. I made a few:
+projects using it. I did quite a few:
 
 * An IRC bot to play holdem poker, cards against humanity and some other games.
 * A little arcade game I call Glub@@{glub}. Do give it a try, it's
   simple, but addictive.
-* A REPL for Earl Grey that I could use to show it off online.
-* Macros for express, react and other libraries.
+* A REPL@@{repl} for Earl Grey that I could use to show it off online.
+* Macros for Express, React@@{egreact} and other libraries.
 * A markup language called Quaint@@{quaint} (that I made the documentation with).
 * An incremental build system, Engage@@{engage}.
 
 quaint => https://breuleux.github.io/quaint
 engage => https://github.com/breuleux/engage
 glub => http://breuleux.net/glub/
+repl => https://breuleux.github.io/earl-grey/repl.html
+egreact => https://github.com/breuleux/earl-react
 
 I started work on a web application, too. That particular project
 showed me just how soul-numbingly horrible JavaScript's callback hell
@@ -287,9 +262,9 @@ But can you always do it, though? Can you always adapt?
 There is a bit of a catch-22 in language design where the more a
 language is used, the clearer it becomes which parts of it are
 problematic and should change, but the harder it gets to actually
-change them. To perfect a language you must use it, but using a
-language requires that its features be stable, robust, set in stone,
-and therefore to remain as imperfect as they were at that
+change them. To hone a language you must use it, but applications
+require that a language's features remain stable, robust, set in
+stone, and therefore as imperfect as they were at that
 moment. Furthermore, the more delays are suffered in fixing flaws or
 plugging holes, the more likely it gets that a dependency is fostered
 upon them. The options you do not explicitly and insistently leave
@@ -302,13 +277,13 @@ was the compiler itself. But _[even then], came moments where I
 thought something ought to be changed, but doing so was nearly
 impossible.
 
-I made several changes in Earl Grey that were awkward to implement,
-and stopped short of implementing others because of how complicated it
+I made several changes in Earl Grey that were awkward to implement and
+stopped short of implementing others because of how complicated it
 would have been for me:
 
 * I added a `method keyword at some point, and of course that broke
-  all the few instances I had of using `method as a
-  variable. That's... often.
+  all the instances I had of using `method as a variable. There
+  were... quite a few.
 
 * At some point I wanted to experiment with changing the behavior of
   the `[?]  operator (it performs runtime type checking,
@@ -373,15 +348,14 @@ omit or use semicolons, use significant indent, use s-expressions,
 whereas they never did before, that they would (often, but not always)
 eventually end up preferring it to the alternative, regardless of what
 they did before or after the switch. Of course this is mostly true of
-cosmetic aspects, but I think it can be true of a few semantic aspects
-as well, like dynamic versus static typing, regardless of what either
-side's champions may have to say about it (again, I'm not saying the
-choice is _always baseless -- but it most likely is if you aren't
-thoroughly informed about it, and I would bet that most people
-aren't).
+cosmetic aspects, but even for important distinctions such as dynamic
+versus static typing, I am not under the impression that most people
+truly have a good grasp of the tradeoffs involved, and if they don't,
+then their preference isn't grounded any better than their preference
+for semicolons and whatnot.
 
-One of those little cosmetic things in Earl Grey that feel natural to
-me is the function declaration syntax:
+One of the little cosmetic things in Earl Grey that feel natural to me
+is the function declaration syntax:
 
 & square(x) = x * x
 
@@ -401,9 +375,9 @@ side of the subtraction operator. So it was quite natural for me to
 think that dashes in variable names would be nice, after all, how
 could it ever be confused with subtraction?
 
-Well. Perhaps those who questioned that choice had a different idea
-about what is natural to write. But they would probably get used to my
-way, just like I could get used to theirs.
+Perhaps those who questioned that choice had a different idea about
+what is natural to write. But they would probably get used to my way,
+just like I could get used to theirs.
 
 
 == Things I learned
@@ -413,70 +387,55 @@ There are many things I learned along this journey. Some of them I
 already suspected, others are somewhat obvious, but they are all worth
 listing.
 
-The first thing is that [__ programming languages are massive.]
+The first thing is that __[programming languages are massive.]
 Packages and libraries, editor and IDE support, tutorials and
-documentation, questions and answers that you can google, all these
-things accrete and gravitate around languages. And although the field
-of programming language design is concerned with a language's proper
-aspects, its syntax, semantics, performance profile, type system, and
-so on, the fact is that when comes the time to write complex
-applications, these aren't the things that matter most. If you want to
-create a language that you can _use as quickly and productively as
-possible, you have to compromise along those lines: the most important
-being compatibility with as many existing libraries as possible, and
-at a minimum, with the editor/tools you plan to use.
+documentation, questions and answers on Google and StackOverflow, all
+these things accrete and gravitate around languages. And although the
+field of programming language design is concerned with a language's
+proper aspects, its syntax, semantics, performance profile, type
+system, and so on, the fact is that when comes the time to write
+complex applications, these aren't the things that matter most. If you
+want to create a language that you can _use as quickly and
+productively as possible, you have to compromise along those lines:
+the most important being compatibility with as many existing libraries
+as possible, and at a minimum, with the editor/tools you plan to use.
 
-Related to this, [__ error reporting is so, so important.] I was aware
-of this from the outset, so I did not do too badly: I took good care
-of tracking the location of code tokens all through parsing and macro
-expansion. This is really the minimum: if an error occur, you need to
-know _where it is before you can do anything about it, you can't
-afford to spend hours hunting something down that the machine could
-find for you. And yet I have been neglectful: I did not implement
-source maps (maps that retrace positions in Earl Grey's source code
-from positions in the generated JavaScript) until getting bitten by
-hard-to-find errors a few times (I was too lazy to learn how source
-mapping worked). These times add up. Get it right the first time.
+__[The things you feel the most passionately about are often the least
+important.] Well, that's not entirely fair -- they can be pretty
+important. But not as much as you think. For example, I cared a lot
+about "purity" and making sure that every operator or syntactic
+construct has one and only one "meaning" (for instance, I believe that
+one shouldn't use braces to delimit both data structures and blocks,
+because these are two incompatible semantics). But I never think about
+"purity of design" when I actually _code. If purity is compromised to
+make some common task easier to write, that will make me happier
+whenever I have to perform that task, but when will I ever think about
+how ugly the compromise is? Basically never, that's when.
 
-[__ The things you feel the most passionately about are often the
-least important.] Well, that's not entirely fair -- they can be pretty
-important. But not as much as you think. One example is syntactic
-"purity" and making sure that every operator or syntactic construct
-has one and only one "meaning" (for instance, one shouldn't use braces
-to delimit both data structures and blocks, because these are two
-incompatible semantics). But without diving into details, let's simply
-say I never think about "purity of design" when I actually _code. If
-purity is compromised to make some common task faster to write, that
-will make me happier whenever I have to perform that task, but when
-will I ever think about how ugly the compromise is? Basically never,
-that's when.
-
-[__ It is never done.] There are always moments when the code you are
+__[It is never done.] There are always moments when the code you are
 writing feels awkward or imperfect, as if the language struggled to
 express some concepts elegantly. You can never figure that out in
 advance, because you can't predict how all the features of your
 language will interact with each other. Some of these combinations
 will be unique, issues that can only happen in your language (which is
 good, since it means it isn't a bland copy of everything else). One
-has to resist the temptation fix every single issue and create bloat,
-but once you wish for something often enough, let's just say it feels
-great to scratch that itch.
-
-
+has to resist the temptation fix every single issue and create bloat.
+My strategy at the moment is to hold on implementing a feature until I
+can recall a dozen times I wished for it.
 
 $$$Writing Earl Grey was an enlightening experience, and it still is,
 since I am not fully done designing it, fixing bugs, improving it in
 any way I can. It has become stable, with some parts true to my
 original vision, others not. It has taught me a few things.
 
-At the beginning I said it was both empowering and isolating. On one
-hand, I have the power to improve and extend what is now my main tool,
-whenever I need to. I never have to fight it (just a little
-sometimes). On the other hand, my dogged determination to use it for
-everything I can is an important limitation, because I become
+At the start I said it was both empowering and isolating. It is
+empowering because I have the power to improve and extend what is now
+my main tool, whenever I need to. I never have to fight it (just a
+little sometimes). On the other hand, my dogged determination to use
+it for everything I can is an important limitation, because I become
 restricted to those things that it does well, and the many tools I do
-not support are out of reach. But I figure that's mostly my problem. I
-would do it again.
+not support are out of reach. It's a tradeoff, but so far I'm happy
+with what I have made.
 
 
 
@@ -643,6 +602,47 @@ the problem is, I have to think of the minutes I spent on other bugs,
 before I had that ability. It adds up, over time.
 
 ]
+
+;; [
+== Tooling
+
+
+Languages don't exist in isolation, they come with a whole
+menagerie. Editors, development environments, debuggers, and so
+on. They cover them in makeup to highlight their features with every
+color in the rainbow, point out errors here and there, helpfully
+complete your thoughts, and so on, and so forth. But when a new
+language is birthed, it has nothing of this. It is naked, black on
+white, or white on black, or whatever fancy colors you choose to use
+by default, like turquoise on burgundy. No annotations, automatic
+completion, no linting... not many people are comfortable coding in
+such an environment.
+
+It's not necessarily a pressing matter if you are implementing your
+language in an established language like, say, C++, which has plenty
+of tools. Alas, I was writing Earl Grey in Earl Grey. I needed
+_something. Thankfully my needs are limited: some Emacs Lisp to
+highlight the features I needed and I was pretty much
+set. Nonetheless, there is something to be said about all the tools
+one has to either remake or forfeit because they cannot be abstracted
+from a language to another.
+
+Truth is, support systems for programming languages are
+_immense. Languages are supported by packages and libraries, by syntax
+highlighting, IDE support, debuggers, online documentation,
+communities on sites such as StackOverflow, paid support, and so
+on. Brand new languages have _nothing. They can, as I have done, play
+nice with existing ecosystems so that they can use another language's
+packages and libraries. Source map support can help too, with some
+editors and debuggers. Still, people will only use languages that
+cater to their needs, and many people demand a lot (not that they
+aren't entitled to). A language designer will put up with whatever
+they make, but it is still an isolating force: all these editors, all
+these toys, out of reach.
+
+]
+
+
 
 store nav ::
   ;; a %
