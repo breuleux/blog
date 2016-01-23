@@ -1,11 +1,10 @@
 
-template :: @minimal
+template :: boilerplate
 
 logo =>
-  img %
-    src = {documents.meta.getRaw{"siteRoot"}}assets/home.svg
+  inherit %
     height = 70px
-    alt = Olivier Breuleux's blog
+    [Olivier Breuleux's blog] @@@ image:home.svg
 
 div#nav-container %
   div#nav %
