@@ -5,9 +5,9 @@ meta ::
   id = 8829cb0e-b596-11e5-a523-175f580c517c
   title = The taste of dog food
   tagline =
-    \[DRAFT\] On using a programming language you designed yourself.
+    \[DRAFT\] On designing and using your own programming language.
   author = Olivier Breuleux
-  date = 2016/01/13
+  date = 2016/01/21
   language = English
   category = Programming
   tags = {O-Expressions, S-expressions, Earl Grey, Programming Languages}
@@ -15,16 +15,15 @@ meta ::
   list: false
 
 
+
 __[$$$As... very few people know], for the past few years I have been
-designing a new programming language called __[Earl
-Grey]@@{earlgrey}. I did not design it as a test of my capabilities,
-or as an academic paper, or any of that. I made it so that I could
-_use it, and use it I have, intensively, to the point that virtually
-all my programming projects at the moment involve my language. To this
-day I am not sure if it was a sane or wise thing to do, but I believe
-that it is a rather unique perspective to share -- one of the few
-experiences I can think of that (curiously enough) is both empowering
-and isolating.
+designing a new programming language called [Earl Grey]@@{earlgrey}. I
+made that language for the express purpose of _using it, and use it I
+have, intensively, to the point that virtually all my programming
+projects at the moment involve my language. To this day I am not sure
+if it was a sane or wise thing to do, but I believe that it is a
+rather unique perspective to share -- one of the few experiences I can
+think of that (curiously enough) is both empowering and isolating.
 
 
 == The motivation
@@ -51,51 +50,120 @@ most people are indifferent to. And you know, when you think about it,
 that is the most likely outcome. Simply look at the humongous number
 of programming languages that exist, most of them half-done or
 abandoned, others excellent but largely ignored. Take languages like
-Oz@@{oz}, or Icon@@{icon}. Super interesting languages, which
-implement novel and powerful concepts that are probably better than
-any you've come up with, and yet, I imagine few people have even heard
-about them. In fact, most of the languages that are used in practice
-are basically cookie-cutter clones of each other, with some minor
-variations and a few ideas filched from decade-old research.
+Oz@@{oz} or Icon@@{icon} which implement novel and powerful concepts
+that are probably better than any you've come up with, and yet, I
+imagine few people have even heard about them. In fact, most of the
+languages that are used in practice are basically cookie-cutter clones
+of each other, with some minor variations and a few ideas filched from
+decade-old research.
 
 oz => https://en.wikipedia.org/wiki/Oz_(programming_language)
 icon => https://en.wikipedia.org/wiki/Icon_(programming_language)
 
 I don't mean to sound bitter about it... well of course I'm a little
-bitter about it. But it's normal. "Mainstream" success is a function
-of being a large corporation (look at Go go), opportunism
-(Coffeescript), being used by its authors to create groundbreaking
-software (C, to write UNIX), or regular human sacrifice to the
-bull-headed god Moloch (I dare you to find a better explanation for
-PHP's continued existence). If one wants to improve the state of
-programming languages, the best thing they could possibly do would be
-to figure out a way to "fast-track" these hundreds of worthy concepts
-and ideas from fringe languages and academic papers to public
-awareness, so that people would actually try them out.
+bitter about it. But it's normal. Learning a new language is a large
+commitment that few people are willing to make. That cost penalizes
+difference, as people seek tweaks on a familiar formula rather than
+completely new paradigms. Pragmatic issues such as libraries and
+tooling support also play a large role, since they are central to most
+people's workflows. You really have to fill a pressing need, just at
+the right moment, for a significant number people to invest
+themselves, but that's not necessarily _your need you would be
+filling. In the end, the only sure way to gain a decent following for
+a language is to have support from a large corporation, but then
+again, that is true of almost anything.
 
-I don't know how to do that. But here's the thing. The more I thought
-about this the more I realized _[I didn't care]. The itch was still
-there, it wouldn't go away. I had a few ideas about a language that I
-would like to use, I wanted to make that language, and then I wanted
-to switch to it permanently and forget about all the others. And I
-thought, well, that's probably enough. I think the first step to sane
-language design is to accept that you are doing this for
-yourself. Your satisfaction is the only thing that matters, to hell
-with everything else.
+I don't have such backing, of course, and I have no social networking
+skills either (sucks to be schizoid). But here's the thing. The more I
+thought about this the more I realized _[I didn't care]. The itch was
+still there, it wouldn't go away. I'd been having ideas about
+programming languages for the better part of a decade and I was still
+mostly using Python, sometimes JavaScript. They felt crippling, not
+powerful enough. I dabbled in Scheme and Racket a bit too, but to be
+honest, I just don't _like s-expressions. So after some
+experimentation I came up with something I called
+[o-expressions]@@oexprs.html, which (in my opinion) combine the
+advantages of conventional syntax and s-expressions. I had several
+other ideas, for instance about how powerful pattern matching
+facilities could be integrated to the language, about ad-hoc
+structures and exceptions, and so on.
 
-I thought that realization was an important milestone, because it
-freed me from worrying too much about whether anybody else would care
-about what I made. I suck too much at marketing and networking to let
-myself worry about it.
+But I felt I had waited long enough and I needed to do _something
+about it. I needed to, so that instead of writing some Python script
+and thinking, I wish I could abstract this pattern with a macro or
+custom operator, or instead of writing something in Racket or Clojure
+and wishing for more syntax, I could use a language that I like and
+that I have control over. I needed to do it for myself, regardless of
+whether anyone else would want anything to do with it or not.
 
+
+== Compromise
+
+
+Grand visions are always dangerous, because of how difficult they are
+to satisfy. Any programming language designer, by nature, is going to
+be much harder to satisfy than anyone else, because most of the time
+other people are already satisfied. And there are a lot of things I
+want from my ideal language, that roughly fall into three categories:
+
+# Ideas that are clear in my mind, like o-expressions, hygienic
+  macros, pattern matching, ad-hoc structures, and so on.
+
+# Ideas that I think have potential, but that I haven't worked out the
+  details: gradual typing, user-space program optimization, built-in,
+  fine-grained serialization of data and code, including support for
+  distributed computing, code signing, and so on.
+
+# Things that require thousands of man-hours, like a sizable package
+  ecosystem, widespread editor/IDE support, and a thriving community.
+
+The problem, of course, is that trying to satisfy that specification
+is basically insane. Just figuring out all the ideas in 2. would take
+years and may never reach a satisfactory conclusion, and during all
+that time I would have to use existing languages. This wasn't
+acceptable: it dawned on me that if I either had to have a perfect
+language, or nothing at all, then I would have nothing at all, plainly
+said. Then it becomes a matter of choosing a particular focus. That
+focus had to be the ideas I was mostly certain about.
+
+Now, I needed a language that would be productive for me, a language
+to make applications in. If for some reason I needed to parse XML,
+serve static files over HTTP, and so on, it would be _nice if I didn't
+have to sink hours implementing these things. In other words, there
+was no getting around the fact that my language had to be compatible
+with some existing runtime. That is why I chose to compile Earl Grey
+to JavaScript. I don't _like JavaScript, but it is ubiquitous from
+running in every browser, and it has an immense ecosystem. I also
+decided not to change its semantics significantly: I had to ensure
+smooth interoperation, make sure that I could easily use any existing
+JavaScript package in Earl Grey, and that JavaScript users could
+easily import packages written in Earl Grey.
+
+It wasn't easy to drop so many interesting ideas, but I didn't really
+have a choice if I wanted something to get done, and in the end, if I
+succeeded in this capacity, within the limited bounds I had set, it
+could only embolden my future projects. Once Earl Grey would be done,
+I could use it to make another language and perhaps take greater risks
+with it. Furthermore, I would certainly make mistakes, and the
+experience is often much more formative than brooding on theory. You
+don't really have much choice but to understand something, after
+you've messed it up.
+
+
+;; [
 
 == Satisfying oneself
 
+.todo %
+  * Make the content/title fit the title/content better.
+  * A bit more personal.
 
 In a way, satisfying yourself in harder than satisfying other people,
 because most of the time other people are already satisfied. It is
 also easier, because by this point you already committed to eat
 whatever crap you put on your plate.
+
+.todo % what does that last sentence mean?
 
 The main issue is the _ecosystem. Because languages don't exist in
 isolation, oh, no. They come with a whole menagerie. Packages and
@@ -146,6 +214,7 @@ egatom => https://atom.io/packages/language-earl-grey
 
 == Bootstrapping
 
+.todo % remove section
 
 Or: what worth is a language that doesn't compile itself? Worthless,
 that's what! The height of _chic for a programming language is for its
@@ -198,25 +267,33 @@ in too many places. You just _have to get this right the first
 time. It's boring, it's easy to neglect, but if you don't do it, it
 will bite you in the ass, it's inevitable.
 
+]
 
-== Evolution
+== Getting to work
 
+I started by bootstrapping@@{bstrap} Earl Grey, meaning that I would
+write its compiler in itself. That has a few advantages: compilers are
+usually large and complex applications, so this is a good, thorough
+test of the language's ability. It also forces you to deal with the
+language you have created from the outset. You have to experience its
+flaws, which is good since you are in a great position to fix them as
+soon as they become evident. Plus, you will naturally end up adapting
+the language so that it is good at writing compilers, at which point
+it is practically going to write itself.
 
-So I had an initial implementation and a rudiment of editor support to
-help me use it. With enough determination, that ought to be plenty to
-get going.
+bstrap => https://en.wikipedia.org/wiki/Bootstrapping_(compilers)
 
-Once the basics are set up, the first weeks of language development
-are blissful. New feature after new feature is implemented, each of
-them making the compiler simpler or more beautiful. If code seems
-forced or inelegant, that can be addressed with clever new
-features. New keywords and operators can be added or tweaked. I added
-significant indent at some point, cleaned out all braces, and it felt
-great. I added pattern matching, replaced countless if/then/else
-statements, and it felt great also. These are good times. You never
-have to fight against the language, because you have complete dominion
-over it, it cannot fight you, it has to bend to your will. Frustration
-turns to elation as you spin a Feature out of it.
+The first weeks of language development are blissful. New feature
+after new feature is implemented, each of them making the compiler
+simpler or more beautiful. If code seems forced or inelegant, that can
+be addressed with clever new features. New keywords and operators can
+be added or tweaked. I added significant indent at some point, cleaned
+out all braces, and it felt great. I added pattern matching, replaced
+countless if/then/else statements, and it felt great also. These are
+good times. You never have to fight against the language, because you
+have complete dominion over it, it cannot fight you, it has to bend to
+your will. Frustration turns to elation as you spin a Feature out of
+it.
 
 But after a while, the language will turn into "good enough". It has
 to, in order to be worthwhile. That's when you start developing other
@@ -306,7 +383,18 @@ used seldom enough that it is reasonable to change all existing
 occurrences. In some cases it may be nigh impossible to identify what
 has to be adapted, and then things must be set in stone.
 
-Earl Grey was born imperfect and it would have to remain so.
+I was aware that Earl Grey was necessarily going to be imperfect, but
+it was interesting to see that even features that I could easily have
+added in theory were becoming impossible. So it was "worse" than I
+thought. I imagine it must be possible to foresee or prevent these
+issues to some extent, but I expect it would be mostly through good
+static analysis, and dynamic languages are more vulnerable to this
+problem. I think Rust@@{rust} did it right, with a long period of
+language design and refinement guided by application, but the
+language's static nature and Mozilla's resources and support certainly
+helped.
+
+rust => https://www.rust-lang.org/
 
 
 == About idiosyncrasy
@@ -423,22 +511,33 @@ has to resist the temptation fix every single issue and create bloat.
 My strategy at the moment is to hold on implementing a feature until I
 can recall a dozen times I wished for it.
 
+__[It is isolating.] I like to do things alone, so that doesn't bother
+me a lot. But it is still unsettling when you feel like you can't
+participate in discussions about programming languages without
+indulging into self-promotion, and when you can't really relate to
+most people's experiences using mainstream languages. There is also a
+shortage of toys to play with: I can use Emacs because I wrote
+earl-mode myself. But I don't have Vim syntax definitions, so I can't
+use that editor productively. I didn't have Atom definitions until
+someone helpfully [wrote some]@@{egatom}. In any case it is clear that
+language limits one's choice of tools and the support they can get
+using them.
+
+egatom => https://atom.io/packages/language-earl-grey
+
 $$$Writing Earl Grey was an enlightening experience, and it still is,
 since I am not fully done designing it, fixing bugs, improving it in
 any way I can. It has become stable, with some parts true to my
 original vision, others not. It has taught me a few things.
 
-At the start I said it was both empowering and isolating. It is
-empowering because I have the power to improve and extend what is now
-my main tool, whenever I need to. I never have to fight it (just a
-little sometimes). On the other hand, my dogged determination to use
-it for everything I can is an important limitation, because I become
-restricted to those things that it does well, and the many tools I do
-not support are out of reach. It's a tradeoff, but so far I'm happy
-with what I have made.
+I must say I'm still itching to make a new programming language, or
+more than one. It is a different itch, though, because I feel I
+already have something nice going on, so I could write a language
+that's experimental or limited in scope, maybe one language for each
+idea I have, that would save the trouble of properly integrating them
+with each other before knowing if they are any good.
 
-
-
+I would write them in Earl Grey, of course.
 
 
 
@@ -639,6 +738,34 @@ cater to their needs, and many people demand a lot (not that they
 aren't entitled to). A language designer will put up with whatever
 they make, but it is still an isolating force: all these editors, all
 these toys, out of reach.
+
+
+
+= MORE
+
+
+
+
+There are many factors behind
+"mainstream" success that I believe are stronger than the language's
+ideas or academic merits. Support from large corporations comes to
+mind (Jave, C#, Go, and so on) along with chance or opportunism
+
+
+To name a few, there is support from a large
+corporation (Java, C#, Go), opportunism (Coffeescript), being used by
+its authors to create groundbreaking software (C, to write UNIX, or
+Ruby on Rails), necessity (JavaScript, Objective-C and now Swift), or
+regular human sacrifice to the bull-headed god Moloch (I dare you to
+find a better explanation for PHP's continued existence). Not that
+these languages are bad, but even when they are good, the principal
+drive behind their success isn't their quality. If one wants to
+improve the state of programming languages, the best thing they could
+possibly do would be to figure out a way to "fast-track" these
+hundreds of worthy concepts and ideas from fringe languages and
+academic papers to public awareness, so that people would actually try
+them out.
+
 
 ]
 
