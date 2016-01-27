@@ -9,9 +9,13 @@ meta ::
   date = 2014/01/25
   language = English
   category = Programming
-  tags = {O-Expressions, S-expressions, Liso, Programming Languages}
-  comments: true
-  list: true
+  tags =
+    * O-Expressions
+    * S-expressions
+    * Liso
+    * Programming Languages
+  comments = true
+  list = true
 
 
 css ::
