@@ -56,5 +56,8 @@
     "sources": "**/*.q",
     "hostname": "http://breuleux.net",
     "siteRoot": "blog/",
-    "saveMeta": "content/meta.json"
+    "meta": {
+        "file": "content/meta.json",
+        "sortBy": "-date"
+    }
 }
