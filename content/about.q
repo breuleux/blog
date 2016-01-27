@@ -70,6 +70,8 @@ div.project %
     Grey]@@{earlgrey}. This blog is written in Quaint.
 
 
+horb :: unmaintained
+
 terminus => https://github.com/breuleux/terminus
 
 div.project %
@@ -85,7 +87,8 @@ div.project %
     your workflow. So you can print actual tables, plots, and so on,
     inline.
 
-horb :: previous projects
+
+horb :: I also worked on
 
 theano => http://deeplearning.net/software/theano/
 
