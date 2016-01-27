@@ -3,22 +3,25 @@ template :: default
 
 meta ::
   id = 8829cb0e-b596-11e5-a523-175f580c517c
-  title = The taste of dog food
-  tagline =
-    \[DRAFT\] On designing and using your own programming language.
+  title = "Screw it, I'll make my own!"
+  tagline = The story of a new programming language
   author = Olivier Breuleux
   date = 2016/01/21
   language = English
   category = Programming
-  tags = {O-Expressions, S-expressions, Earl Grey, Programming Languages}
-  comments: true
-  list: false
+  tags =
+    * O-Expressions
+    * S-expressions
+    * Earl Grey
+    * Programming Languages
+  comments = true
+  list = true
 
 
-
-__[$$$As... very few people know], for the past few years I have been
-designing a new programming language called [Earl Grey]@@{earlgrey}. I
-made that language for the express purpose of _using it, and use it I
+__[$$$As... very few people know], for the past couple years I have
+been designing a new programming language called [Earl Grey]@@{earlgrey}.
+I did not design it as a test of my capabilities, or as an academic
+paper, or any of that. I made it so that I could _use it, and use it I
 have, intensively, to the point that virtually all my programming
 projects at the moment involve my language. To this day I am not sure
 if it was a sane or wise thing to do, but I believe that it is a
@@ -313,6 +316,8 @@ glub => http://breuleux.net/glub/
 repl => https://breuleux.github.io/earl-grey/repl.html
 egreact => https://github.com/breuleux/earl-react
 
+All in all, these add up to about 30,000 lines of Earl Grey.
+
 I started work on a web application, too. That particular project
 showed me just how soul-numbingly horrible JavaScript's callback hell
 was, and even though they were clearly better, the awkwardness of
@@ -325,9 +330,9 @@ There's something liberating about this, you know: seeing that
 something is lacking, that some code is significantly more awkward
 than it _should be... and then fixing it yourself. No need to wait for
 the EcmaScript standards to address the problem, or for
-[PEP0492]@@{pep0492} to be accepted in mainstream Python, and so
-forth. You just... do it. Of course, it's no small time investment,
-but once it works it is quite rewarding.
+[PEP0492]@@{pep0492} to be accepted in mainstream Python (that is a
+done thing now), and so forth. You just... do it. Of course, it's no
+small time investment, but once it works it is quite rewarding.
 
 pep0492 => https://www.python.org/dev/peps/pep-0492/
 
