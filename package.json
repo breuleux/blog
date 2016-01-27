@@ -8,7 +8,12 @@
     "gulp": "^3.9.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
-    "@breuleux/quaint-my-utils": ">= 0.0.0"
+    "@breuleux/quaint-my-utils": ">= 0.0.0",
+    "quaint-google-analytics": ">=0.0.0",
+    "quaint-earlgrey": ">=0.0.3",
+    "quaint-disqus": ">=0.0.0",
+    "quaint-share-buttons": ">=0.0.0",
+    "quaint-look-nice": ">=0.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
