@@ -16,24 +16,25 @@ horb :: articles
 
 articles => data :: meta.json
 
-{
-  require: moment
-  require: lodash
-  n = null
-  a = engine.gen{articles}
-  var res = lodash.sort-by{items{a} each {k, v} -> v} with x -> x.date
-  res = res.reverse{}
-  sorted = if{n, lodash.take{res, n}, res}
-  ul.articles %
-    sorted each article when article.list ->
+css ::
+  #main-container .postbit > a {
+    text-decoration: none;
+  }
+  #main-container .postbit > a:hover {
+    text-decoration: underline;
+  }
+
+ul.articles %
+  each data::meta.json x data ::
+    {data.list} ??
       li.postbit %
-        onclick = 'window.location = \'{article.localUrl}\''
-        a %
-          href = article.localUrl
-          article.title or "Untitled"
-        span.date % moment{article.date, "YYYY/MM/DD"}.format{"MM/YYYY"}
-        span.tagline % engine.gen{article.tagline} 
-}
+        onclick = window.location = '{data.localUrl}'
+        {data.title}!!Untitled @@ {data.localUrl}
+        span.date % {
+          require: moment
+          moment{data.date, "YYYY/MM/DD"}.format{"MM/YYYY"}
+        }
+        span.tagline % {data.tagline}
 
 
 ornate :: 1
