@@ -6,7 +6,7 @@ meta ::
   title = "Screw it, I'll make my own!"
   tagline = The story of a new programming language
   author = Olivier Breuleux
-  date = 2016/01/21
+  date = 2016/01/27
   language = English
   category = Programming
   tags =
@@ -303,11 +303,11 @@ to, in order to be worthwhile. That's when you start developing other
 projects using it. I did quite a few:
 
 * An IRC bot to play holdem poker, cards against humanity and some other games.
-* A little arcade game I call Glub@@{glub}. Do give it a try, it's
-  simple, but addictive.
+* A little arcade game I call Glub and that I'll probably try to publish on mobile.
 * A REPL@@{repl} for Earl Grey that I could use to show it off online.
 * Macros for Express, React@@{egreact} and other libraries.
 * A markup language called Quaint@@{quaint} (that I made the documentation with).
+* About twenty plugins for that markup language.
 * An incremental build system, Engage@@{engage}.
 
 quaint => https://breuleux.github.io/quaint
