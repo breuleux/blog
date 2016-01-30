@@ -3,10 +3,10 @@ template :: default
 
 meta ::
   id = 8829cb0e-b596-11e5-a523-175f580c517c
-  title = "Screw it, I'll make my own!"
+  title = "\"Screw it, I'll make my own!\""
   tagline = The story of a new programming language
   author = Olivier Breuleux
-  date = 2016/01/27
+  date = 2016/01/29
   language = English
   category = Programming
   tags =

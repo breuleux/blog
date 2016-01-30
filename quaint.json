@@ -38,8 +38,7 @@
                 "table-odd": "#fff",
                 "table-even": "#fff",
                 "table-header": "#000"
-            },
-            "extra": "style/blog.sass"
+            }
        }
     },
     "contentRoot": "content",
@@ -47,6 +46,7 @@
     "resources": {
         "root": "resources",
         "files": {
+            "blog.sass": "style/blog.sass"
         }
     },
     "server": {
