@@ -585,12 +585,12 @@ implementation translates o-expressions into s-expressions in such a
 way to keep maximal compatibility. The resulting syntax is a bit more
 complex than pure o-expressions would be if they were the basis of a
 new language, but that's always to be expected when shoehorning a
-system into another. You can read about it here@@@liso.
+system into another. You can read about it here@@@liso.html.
 
 
 store nav ::
   div.seealso %
-    * [Liso @@@ liso], an alternative syntax
+    * [Liso @@@ liso.html], an alternative syntax
       for Racket based on oexprs.
     * [Earl Grey @@ http://breuleux.github.io/earl-grey/],
       a compile-to-JS language based on oexprs.

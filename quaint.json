@@ -1,63 +1,82 @@
 {
-    "templates": {
-        "root": "template"
+  "sources": [
+    "**/*.q"
+  ],
+  "dataFiles": [],
+  "data": {},
+  "plugins": {
+    "@breuleux/quaint-my-utils": {
+      "defaultLanguage": null,
+      "highlightTheme": "xcode"
     },
-    "plugins": {
-        "@breuleux/quaint-my-utils": {
-            "defaultLanguage": null,
-            "highlightTheme": "xcode"
-        },
-        "google-analytics": {
-            "trackingId": "UA-42450029-1",
-            "auto": true
-        },
-        "earlgrey": {
-        },
-        "disqus": {
-            "shortname": "breuleux",
-            "idField": "id"
-        },
-        "share-buttons": {
-        },
-        "look-nice": {
-            "useNav": true,
-            "fonts": {
-                "body": "g:Open Sans",
-                "title": "g:Mate SC"
-            },
-            "widths": {
-                "body": "750px"
-            },
-            "colors": {
-                "link-visited": "rgb(85, 26, 139)"
-            },
-            "backgrounds": {
-                "body": "#fff",
-                "nav": "#fff",
-                "table": "#fff",
-                "table-odd": "#fff",
-                "table-even": "#fff",
-                "table-header": "#000"
-            }
-       }
+    "google-analytics": {
+      "trackingId": "UA-42450029-1",
+      "auto": true
     },
-    "contentRoot": "content",
-    "output": "out",
-    "resources": {
-        "root": "resources",
-        "files": {
-            "blog.sass": "style/blog.sass"
-        }
+    "earlgrey": {},
+    "disqus": {
+      "shortname": "breuleux",
+      "idField": "id"
     },
-    "server": {
-        "startPage": "index.html"
+    "share-buttons": {},
+    "look-nice": {
+      "useNav": true,
+      "fonts": {
+        "body": "g:Open Sans",
+        "title": "g:Mate SC"
+      },
+      "widths": {
+        "body": "750px"
+      },
+      "colors": {
+        "link-visited": "rgb(85, 26, 139)"
+      },
+      "backgrounds": {
+        "body": "#fff",
+        "nav": "#fff",
+        "table": "#fff",
+        "table-odd": "#fff",
+        "table-even": "#fff",
+        "table-header": "#000"
+      }
     },
-    "files": ["assets"],
-    "sources": "**/*.q",
-    "hostname": "http://breuleux.net",
-    "siteRoot": "blog/",
-    "meta": {
-        "file": "content/meta.json",
-        "sortBy": "-date"
-    }
+    "repple": {}
+  },
+  "inject": [],
+  "contentRoot": "content",
+  "output": "out/blog/",
+  "format": "html",
+  "templates": {
+    "default": "@minimal",
+    "root": "template"
+  },
+  "resources": {
+    "root": "resources",
+    "inline": false,
+    "files": {
+      "blog.sass": "style/blog.sass"
+    },
+    "url": "resources"
+  },
+  "meta": {
+    "file": "content/meta.json",
+    "sortBy": "-date"
+  },
+  "watch": false,
+  "hostname": "http://breuleux.net",
+  "siteRoot": "blog/",
+  "server": {
+    "enable": false,
+    "delay": 300,
+    "port": 9135,
+    "startPage": "index.html",
+    "openBrowser": true
+  },
+  "verbose": false,
+  "files": [
+    "assets"
+  ],
+  "nominalOutput": "out",
+  "_configFile": "quaint.json",
+  "_configExists": true
 }

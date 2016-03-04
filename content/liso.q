@@ -25,7 +25,7 @@ css ::
     border: 1px solid #aaa;
   }
   .cmptable0 table {
-    font-size: 20px;
+    font-size: 12px;
   }
 
 
@@ -188,7 +188,10 @@ later.
 = Priority graph
 
 div.prio %
-  @@@ image:liso_priority
+  style = width:100%; box-sizing: border-box;
+  inherit %
+    style = width:100%; box-sizing: border-box;
+    @@@ image:assets/liso_priority.png
 
 (`I and `D mean indent and dedent respectively, i.e. the start and end
 of an indented block)
@@ -731,7 +734,7 @@ update when I make up my mind on a few things.
 store nav ::
   toc::
   div.seealso %
-    * O-expressions @@@ oexprs
+    * O-expressions @@@ oexprs.html
     * Liso source @@ https://github.com/breuleux/liso
     * [Earl Grey @@ http://breuleux.github.io/earl-grey/],
       designed later from the same principles.

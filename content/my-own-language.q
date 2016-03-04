@@ -640,7 +640,7 @@ JavaScript's loosely typed semantics. But doing otherwise would have
 been a greater limitation on my future options. So I went for it and
 started by making Earl Grey into its own image. I made a very simple
 version in Racket that produced valid JavaScript, based on previous
-work I had done with [operator precedence grammars]@@@oexprs. A couple
+work I had done with [operator precedence grammars]@@@oexprs.html. A couple
 hundred lines or so. Then I reimplemented it in Earl Grey, completing
 the bootstrap. It is quite satisfying to do, although it can be a bit
 confusing.

@@ -103,7 +103,7 @@ ul.toc li
   content: ""
 
 .tagline
-  font-size: 20pt
+  font-size: 27px
   font-style: italic
   padding-bottom: 20px
 
@@ -115,6 +115,9 @@ h1:before
   background-color: #532D71
   color: white
   content: ""
+
+.ornate h1:before
+  background-color: transparent
 
 .title
   font-size: 40pt
@@ -150,7 +153,7 @@ li
 .intro
   margin-top: 20px
   margin-bottom: 30px
-  font-size: 16pt
+  font-size: 20px
 
 ul.articles
   list-style-type: none
@@ -167,7 +170,7 @@ ul.articles
     display: block
     padding: 0px
     margin-left: 30px
-    font-size: 14pt
+    font-size: 20px
 
 
 /* ABOUT
@@ -187,7 +190,7 @@ ul.articles
       width: 200px
       margin-right: 40px
     a
-      font-size: 30pt
+      font-size: 30px
       font-weight: bold
       color: black
   .project-description
@@ -253,7 +256,12 @@ ul.articles
       width: 100%
 
 
-@media screen and (max-width: $width-body+600px) and (min-device-aspect-ratio: 100/99)
+#logo img
+  height: 70px
+
+/* @media screen and (max-width: $width-body+600px) and (min-device-aspect-ratio: 100/99)
+
+@media screen and (max-width: $width-body+600px)
   #logo img
     height: 50px
   #nav-container
@@ -267,16 +275,31 @@ ul.articles
   #title-container
     background-color: #B6D8D3
   .title
+    line-height: 1.2
     margin-top: 0px
-    padding-left: 50px
+    padding-left: 15px
+    padding-right: 15px
     padding-top: 20px
     padding-bottom: 20px
 
 
+pre
+  box-sizing: border-box
 
-@media screen and (max-device-aspect-ratio: 99/100)
-  #logo img
-    height: 100px
+table
+  box-sizing: border-box
+
+h1, h2
+  line-height: 1.2
+
+
+@media screen and (max-width: 800px)
+  /* #logo img
+  /*   height: 100px
+  .project .project-title img
+    width: 100px
+  .project .project-title a
+    font-size: 25px
   #nav-container
     background-color: #eee
   #nav
@@ -287,22 +310,45 @@ ul.articles
     visibility: hidden
   #title-container
     background-color: #B6D8D3
+  body
+    font-size: 18px
+  ul.articles .tagline
+    font-size: 18px
+  .tagline
+    font-size: 20px
+    padding-bottom: 0px
   .title
-    margin-top: 0px
-    padding-left: 50px
-    padding-top: 20px
-    padding-bottom: 20px
-  ol
-    padding-left: 70px
-  .share-buttons > a img
-    height: 100px
-    padding: 0 25px
-  span.lead
-    font-size: 100pt
-    line-height: 100pt
-    margin-right: 20px
-  pre.hljs
-    font-size: 30px
+    font-size: 25px
+    margin-bottom: 0px
+  h1
+    font-size: 25px
+  h2
+    font-size: 20px
+  .deco1
+    width: 60px
+    height: 60px
+  .deco3
+    width: 80px
+    height: 80px
+  .deco2
+    width: 25px
+    height: 25px
+  /* .title
+  /*   margin-top: 0px
+  /*   padding-left: 50px
+  /*   padding-top: 20px
+  /*   padding-bottom: 20px
+  /* ol
+  /*   padding-left: 70px
+  /* .share-buttons > a img
+  /*   height: 100px
+  /*   padding: 0 25px
+  /* span.lead
+  /*   font-size: 100pt
+  /*   line-height: 100pt
+  /*   margin-right: 20px
+  /* pre.hljs
+  /*   font-size: 30px
 
 
 

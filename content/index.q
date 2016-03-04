@@ -7,7 +7,7 @@ meta ::
 
 ornate :: 131
 
-[horb :: \text] => ornate L2+2L :: h2 % {text}
+[horb :: \text] => ornate L2+2L :: h1 % {text}
 
 div.intro %
   Hello! Welcome to __[Olivier Breuleux]@@about.html~'s humble slice of the web :\)

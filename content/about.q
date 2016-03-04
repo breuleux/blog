@@ -35,7 +35,7 @@ I do like to talk about the random projects I start, though. You can
 check them out on [GitHub {githubi}]@@{github} or read about them here:
 
 
-[horb :: \text] => ornate L2+2L :: h2 % {text}
+[horb :: \text] => ornate L2+2L :: h1 % {text}
 
 
 horb :: current projects
@@ -45,7 +45,7 @@ earlgrey => https://breuleux.github.io/earl-grey/
 div.project %
   .project-title %
     onclick = window.location = '{earlgrey}';
-    @@@image:earlgrey.svg
+    @@@image:assets/earlgrey.svg
     Earl Grey @@ {earlgrey}
   .project-description %
     __ Earl Grey is a new programming language. @@ {earlgrey}
@@ -60,7 +60,7 @@ quaint => https://breuleux.github.io/quaint
 div.project %
   .project-title %
     onclick = window.location = '{quaint}';
-    @@@image:quaint.png
+    @@@image:assets/quaint.png
     Quaint @@ {quaint}
   .project-description %
     __ Quaint is a new markup language. @@ {quaint}
@@ -77,7 +77,7 @@ terminus => https://github.com/breuleux/terminus
 div.project %
   .project-title %
     onclick = window.location = '{terminus}';
-    @@@image:terminus.png
+    @@@image:assets/terminus.png
     Terminus @@ {terminus}
   .project-description %
     __ Terminus is an HTML terminal. @@ {terminus}
@@ -95,7 +95,7 @@ theano => http://deeplearning.net/software/theano/
 div.project %
   .project-title %
     onclick = window.location = '{theano}';
-    @@@image:theano.png
+    @@@image:assets/theano.png
     Theano @@ {theano}
   .project-description %
     __ Theano is an arithmetic expression compiler. @@ {theano}
