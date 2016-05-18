@@ -7,7 +7,8 @@
   "plugins": {
     "@breuleux/quaint-my-utils": {
       "defaultLanguage": null,
-      "highlightTheme": "xcode"
+      "highlightTheme": "xcode",
+      "language": "english"
     },
     "google-analytics": {
       "trackingId": "UA-42450029-1",
@@ -44,7 +45,7 @@
   },
   "inject": [],
   "contentRoot": "content",
-  "output": "out/blog/",
+  "output": "out",
   "format": "html",
   "templates": {
     "default": "@minimal",
@@ -66,7 +67,7 @@
   "hostname": "http://breuleux.net",
   "siteRoot": "blog/",
   "server": {
-    "enable": false,
+    "enable": true,
     "delay": 300,
     "port": 9135,
     "startPage": "index.html",
@@ -75,8 +76,5 @@
   "verbose": false,
   "files": [
     "assets"
-  ],
-  "nominalOutput": "out",
-  "_configFile": "quaint.json",
-  "_configExists": true
+  ]
 }
