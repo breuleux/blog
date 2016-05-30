@@ -3,16 +3,16 @@ template :: default
 
 meta ::
   id = 2d68aba0-f140-11e5-a13a-9bad23a1302c
-  title = Trivial language design
-  tagline = A 450-lines implementation of a programming language in JavaScript
+  title => <Insert Language Name Here>
+  tagline = A short implementation of a programming language in JavaScript.
   author = Olivier Breuleux
-  date = 2016/03/23
+  date = 2016/05/21
   language = English
   category = Programming
   tags =
     * Programming Languages
   comments = true
-  list = true
+  list = false
 
 store nav ::
   toc::
@@ -51,12 +51,12 @@ sass ::
         .str:before, .str:after
           content: ""
 
-langname => Mega Crocodile
+langname => Teacup
 [langspan ::] => [span.langname % {langname}]
 
 css ::
   #langname {
-    display: inline-block;
+    text-align: center;
     border-bottom: 2px solid #888;
     padding-right: 5px;
     padding-left: 5px;
@@ -69,6 +69,14 @@ css ::
   .repple-editor-container .repple-editor, .repple-editor-container .repple-aside {
     height: auto;
   }
+  .note:before {
+    content: "Note: ";
+    font-weight: bold;
+  }
+  .note {
+    background-color: #ddf;
+    padding: 10px;
+  }
 
 js ::
   function loggable(cls) {
@@ -76,6 +84,9 @@ js ::
     cls["::name"] = cls.name;
   }
 
+;; textarea#testotron %
+
+__ DRAFT --- do not share
 
 $$$A bit over a year ago I posted [this little gem]@@http://jsfiddle.net/osfnzyfd/
 on Hacker News, where I define a simple programming language in 450 lines
@@ -84,11 +95,13 @@ at that moment to make a more detailed post explaining how it worked, but I neve
 got around to it. So I'm going to go ahead and do it now.
 
 That language was a nameless throwaway experiment, but for the
-purposes of this post I should probably give it a name. Now, at first
-I thought about giving it an unassuming name, something adorable, like
-"Teacup", perhaps. But as this language is probably going to fade from
-everyone's memories in less than a day, this is a golden opportunity
-to give it a properly outrageous name:
+purposes of this post I should probably give it a name. I'm going to
+go with "Teacup", an unassuming, adorable name, fit for the small and
+unassuming language we're going to make.
+
+If you don't like it and would rather give it a mighty name like, I
+don't know, _TeaRex, you can edit it below:
+
 div#langname %
   contenteditable = true
   {langname}
@@ -107,6 +120,15 @@ js ::
   langname.onkeyup = function () { updateLang(name); }
 
 
+.note %
+  The tutorial is interactive, which means that besides changing the
+  language's name to something that will make you giggle like a
+  schoolgirl, you can edit the code in each box and run it with
+  Ctrl+Enter. You can use the `log function to pretty-print objects in
+  the area to the right of the text editor. However, this is only
+  going to be practical on a desktop.
+
+
 == Lexer
 
 The job of a lexer is to split the input text into a list of discrete
@@ -123,6 +145,7 @@ inherit %
   style = height:320px
   repple editor ::
     language = javascript
+    indent = 4
     theme = eclipse
     code =>
       // You can edit this and execute the code with Ctrl+Enter
@@ -162,7 +185,7 @@ inherit %
          this.types = [null].concat(keys);
       }
       loggable(Tokenizer);
-      Tokenizer.prototype.tokenize = function(text) {
+      Tokenizer.prototype.primTokenize = function(text) {
          var pos = 0;
          // Splitting with a regular expression inserts the matching
          // groups between the splits.
@@ -175,6 +198,7 @@ inherit %
             }))
             .filter(t => t.type && t.text) // remove empty tokens
       }
+      Tokenizer.prototype.tokenize = Tokenizer.prototype.primTokenize;
       var tokenizer = new Tokenizer(tokenDefinitions);
       // log(tokenizer)
       var testCode = 'one + "two" == 3' // change me!
@@ -184,14 +208,15 @@ inherit %
 You can change `testCode to something else you want to test (hit
 Ctrl+Enter to run).
 
-Essentially, we build a large regular expression with one matching
-group for each token type, then we use `String.split to get our list
-of tokens, which is a mix of matching strings and the value `undefined
-(when there is no match). The type of each token can be figured out
-from its position in the list. Then we filter out the spurious tokens,
-those that have `undefined in the text field or a `null type.
+Essentially, we build a __[large regular expression] with one
+__[matching group] for each token type, then we use `String.split to
+get our list of tokens, which is a mix of matching strings and the
+value `undefined (when there is no match). The type of each token can
+be figured out from its __position in the list. Then we filter out the
+spurious tokens, those that have `undefined in the text field or a
+`null type.
 
-We also store start and end positions for each token. It is very
+We also store __start and __end positions for each token. It is very
 important to keep track of these numbers so that when things go wrong,
 we know _where they went wrong.
 
@@ -199,45 +224,49 @@ we know _where they went wrong.
 == Parser
 
 Alright, so we have a list of tokens. Now we need to organize them
-into a structure that resembles some kind of program. We are going to
-use a very simple, but elegant system for this: an operator precedence
-grammar.
+into a structure that resembles some kind of program. For langspan::
+we are going to use a very simple, but elegant system: an __[operator
+precedence grammar].
 
 OPGs are more limited than the LL or LR grammars that are used for
 most languages, but I think these are overkill anyway. OPGs have some
 interesting properties that in my view make up for the
-limitations. For instance, the parsing rules are highly local, which
-means they are, in principle, amenable to parallel parsing. Also,
-nobody ever talks about them.
+limitations. For instance, the parsing rules are highly __local, which
+means they are, in principle, amenable to parallel parsing.
+
+Also, nobody ever talks about them, so I can differentiate my offering
+in the unending flood of terrible tutorials that plague the Internet.
 
 Now, the common understanding of operator precedence is that each
 operator has a precedence number and is either left-associative or
 right-associative. But forget about this system. It's rubbish. Let me
-show you a better one.
+show you a better one:
 
 
 === Operator precedence grammars
 
-Instead, imagine that you have a precedence _matrix, with a cell for
-each (ordered) pair of operators. So if you have the expression `(a +
-b * c), instead of looking up the numbers for `[+] and `[*], you look
-up the matrix entry `M(+, *). There are three possibilities:
+Instead, imagine that you have a __[precedence matrix], with a cell
+for each (ordered) pair of operators. So if you have the expression
+`(a + b * c), instead of going: "Okay, so `[+] has priority 10, and
+`[*] has priority 20, so `[*] has higher priority and we must
+parenthesize it like this: `(a + (b * c))", you look up the matrix
+entry `M(+, *). There are three possibilities:
 
-* `[M(+, *) = -1]: `[+] has precedence, so the expression should be
-  parenthesized as `((a + b) * c).
-* `[M(+, *) = 1]: `[*] has precedence, so the expression should be
-  parenthesized as `(a + (b * c)).
-* `[M(+, *) = 0]: both operators are equal, so `b "belongs" to both of
+* `[M(+, *) = -1]: the operator on the __left (`[+]) has precedence,
+  so the expression should be parenthesized as `((a + b) * c).
+* `[M(+, *) = 1]: the operator on the __right (`[*]) has precedence,
+  so the expression should be parenthesized as `(a + (b * c)).
+* `[M(+, *) = 0]: both operators are __equal, so `b "belongs" to both of
   them. If you want a better intuition as to what this means, it means
-  you are making the ternary operator `[+*] and `b is its middle operand.
+  you are making the __ternary operator `[+*] and `b is its middle operand.
 
 If the expression, instead, was `(a * b + c), then we would consult
 `M(*, +), which may or may not be the opposite of `M(+, *). In fact:
 
-* `[M(+, +) = -1] means that `[+] is left-associative.
-* `[M(^, ^) = 1] means that `[^] is right-associative.
-* For a ternary operator, for example `[a ? b : c], then `[M(?, :) = 0].
-* The same idea works for brackets: `[M([, ]) = 0].
+* `[M(+, +) = -1] means that `[+] is __left-associative.
+* `[M(^, ^) = 1] means that `[^] is __right-associative.
+* For a __ternary operator, for example `(a ? b : c), then `[M(?, :) = 0].
+* The same idea works for __brackets: `[M([, ]) = 0].
 
 So you can see this is pretty powerful. You get associativity, you get
 ternary operators, brackets, and so on, for free. You could also
@@ -247,16 +276,16 @@ if you wanted to (and we _will want to do this).
 
 === Precedence definitions
 
-Granted, defining a precedence matrix sounds like work. If you have
-ten operators, the matrix is ten by ten, which means a hundred
-entries. If you have twenty, well... yeah. We certainly don't want to
-fill that manually.
+Granted, defining a precedence matrix sounds like _work. If you have
+ten operators, the matrix is five by ten, which means a hundred
+entries. If you have twenty, well... yeah. We don't want to fill that
+manually.
 
 There are many solutions to this problem, but a tutorial can only
 afford so much sophistication, so what we're going to do is this: for
 each operator `op, we will have _two numeric priorities: a
-left-priority `L(op) for when the operator is on the left and a
-right-priority `R(op) for when it is on the right. And then we will
+__left-priority `L(op) for when the operator is on the left and a
+__right-priority `R(op) for when it is on the right. And then we will
 define `M(op1, op2) using `L and `R as follows:
 
 ` M(op1, op2) = sign(R(op2) - L(op1))
@@ -267,7 +296,7 @@ scheme, this preserves our ability to define ternary operators. What
 follows are the priorities for [langspan::]. Some of them will seem
 strange at first glance, but I will explain everything.
 
-inherit %
+;; inherit %
   style = height:500px
   repple editor ::
     language = javascript
@@ -341,22 +370,96 @@ inherit %
       log(priorities);
 
 
+inherit %
+  style = height:500px
+  repple editor ::
+    language = javascript
+    theme = eclipse
+    code =>
+      var priorities = Object.assign(Object.create(null), {
+
+        // Basic arithmetic
+        "+":             {left: 501, right: 500},
+        "-":             {left: 501, right: 500},
+        "*":             {left: 601, right: 600},
+        "/":             {left: 601, right: 600},
+        "^":             {left: 700, right: 701},
+
+        // Comparison and logic
+        "or":            {left: 100, right: 100},
+        "and":           {left: 110, right: 110},
+        ">":             {left: 200, right: 200},
+        "<":             {left: 200, right: 200},
+        ">=":            {left: 200, right: 200},
+        "<=":            {left: 200, right: 200},
+        "==":            {left: 200, right: 200},
+
+        // Brackets
+        "(":             {left: 0,     right: 10000},
+        ")":             {left: 10001, right: 0},
+        "[":             {left: 0,     right: 10000},
+        "]":             {left: 10001, right: 0},
+        "{":             {left: 0,     right: 10000},
+        "}":             {left: 10001, right: 0},
+
+        // Lists
+        ",":             {left: 5, right: 5},
+        ";":             {left: 1, right: 1},
+        "\n":            {left: 1, right: 1},
+
+        // Field access
+        ".":             {left: 15001, right: 1000},
+
+        // Declaration, lambda
+        "=":             {left: 10, right: 11},
+        "->":            {left: 10, right: 11},
+
+        // if _ then _ elseif _ ... else _ end
+        "if":            {left: 0,     right: 10001},
+        "then":          {left: 0,     right: 0},
+        "elseif":        {left: 0,     right: 0},
+        "else":          {left: 0,     right: 0},
+        "end":           {left: 10000, right: 0},
+
+        // let _ = _ in _ end
+        "let":           {left: 0,     right: 10001},
+        "in":            {left: 0,     right: 0},
+        "end":           {left: 10000, right: 0},
+
+        // for _ in _ [when _] do _ end
+        "for":           {left: 0,     right: 10001},
+        "in":            {left: 0,     right: 0},
+        "when":          {left: 0,     right: 0},
+        "do":            {left: 0,     right: 0},
+        "end":           {left: 10000, right: 0},
+
+        // Other operators
+        "type:op":       {left: 900,       right: 900},
+
+        // atoms
+        "type:word":     {left: 20000,     right: 20001},
+        "type:number":   {left: 20000,     right: 20001},
+        "type:string":   {left: 20000,     right: 20001},
+      });
+      log(priorities);
+
+
 The arithmetic priorities are straightforward enough, but for brackets
 and some keywords you might wonder what the `10000 and `10001
 priorities are for. Basically, they are to make sure an operator is
-prefix or suffix (or both).
+__prefix or __suffix (or both).
 
-Imagine you have the expression `(a + * b).  You are still going to
-compare `[+] to `[*], but what does it mean when there is no token in
-the middle? Well, it's either going to be `((a +) * b) or `(a + (*
-b)), so we want to know whether `[+] is suffix or `[*] is prefix. But
-as you can imagine, if `R(*) is very high, then it's going to be
-prefix no matter what. That's why `R is high for opening brackets and
-`L is high for closing brackets.
+Imagine you have the expression `(a + * b).  You have to compare `[+]
+to `[*], but what does it mean when there is no token in the middle?
+Well, it's either going to be `((a +) * b) or `(a + (* b)), so we want
+to know whether `[+] is suffix or `[*] is prefix. But as you can
+imagine, if `R(*) is very high, then it's going to be prefix no matter
+what. That's why `R is high for opening brackets and `L is high for
+closing brackets.
 
 And what about the entries for `word, `number and `string? These are
 not operators, right? Well, to simplify the code, we will assume that
-they _are operators, but these operators are nullary (they are both
+they _are operators, but these operators are __nullary (they are both
 prefix and suffix).
 
 What follows is the code to get a token's priority and the `order
@@ -374,7 +477,8 @@ inherit %
       }
       Parser.prototype.getPrio = function (t) {
           var x = this.priorities[t.type + ":" + t.text]
-               || this.priorities["type:" + t.type]
+               || this.priorities[t.text]
+               || this.priorities["type:" + t.type];
           if (x) return x;
           else throw SyntaxError("Unknown operator: " + t.text);
       }
@@ -392,13 +496,13 @@ inherit %
 === Algorithm
 
 Now that we have a priority system for our operators here is the meat:
-the operator precedence parser. It is not a long algorithm, nor is it
-very complicated. The most difficult is to properly visualize its
+the __[operator precedence parser]. It is not a long algorithm, nor is
+it very complex. The most difficult is to properly visualize its
 operation, but you can uncomment the `log line in the code to get a
-useful trace of what the algorithm is doing.
+useful trace of what the algorithm is doing!
 
 inherit %
-  style = height:800px
+  style = height:1200px
   repple editor ::
     language = javascript
     theme = eclipse
@@ -456,12 +560,12 @@ inherit %
 In the right pane, you can see the output of the raw algorithm, which
 is a deeply nested list. It may seem oddly organized at first glance,
 but it is actually very neat: notice that in each list (0-based),
-which we will also call a "handle", the odd indexes are the operator
-tokens, and the even indexes are the operands. For instance:
+which we will also call a "handle", the __odd indexes are the operator
+tokens, and the __even indexes are the operands. For instance:
 
 * The atom `a
   (which as I explained before is parsed as a nullary
-  operator) corresponds to the list `[[null, a, null]] the operator is
+  operator) corresponds to the list `[[null, a, null]]. The operator is
   `a (in position 1), and it has two `null operands (in position 0 and 2).
 * `[a + b] corresponds to the list `[[a, +, b]]: operator `[+] in
   position 1, operands `a and `b in position 0 and 2.
@@ -480,7 +584,7 @@ above). That is the subject of the next section:
 === Finalizing the parse
 
 Although neat, the raw output of `parse is not necessarily the one we
-want. The `finalize function is given a handle after it is completed
+want. The __[`finalize] function is given a handle after it is completed
 and must return the "value" associated to that handle. If you are
 writing a simple calculator, that can be an evaluation function; if
 you are writing a compiler or a more elaborate interpreter, it can be
@@ -492,22 +596,24 @@ this somewhat cleverly, for reasons that will become apparent later
 (note that in what follows, `"a" is shorthand for the token object for
 `a):
 
+__ Our transformation rules:
+
 * `[[null, "a", null]         ==> "a"]
 * `[[a, "+", b]               ==> ["E + E", a, b]]
 * `[[null, "+", b]            ==> ["_ + E", b]]
 * `[[null, "(", a, ")", null] ==> ["_ ( E ) _", a]]
 
-In other words, we will eliminate nullary operators, and aggregate the
-operators that we find in odd positions into an expression that
+In other words, we will __eliminate nullary operators, and __aggregate
+the operators that we find in odd positions into an expression that
 describes which of the operands are not null.
 
-Also we are not really going to return an expression in prefix
+(Also we are not really going to return an expression in prefix
 notation, instead we will put the function's "signature" in the `type
 field and the arguments in the `args field. That simplifies things a
 little: our AST will have our old token nodes as leaves, with types
 `word, `number, `string. And now we're going to add inner nodes with
 type `[E + E] and the like, so that later on we can simply dispatch on
-`type.
+`type.)
 
 inherit %
   style = height:500px
@@ -526,7 +632,7 @@ inherit %
                           return x.text
                   }).join(" "),
                   args: node.filter((x, i) => x && i % 2 == 0),
-                  orig: node,
+                  ops: node.filter((x, i) => i % 2 == 1),
                   start: node[0] ? node[0].start : node[1].start,
                   end: node[l-1] ? node[l-1].end : node[l-2].end};
       }
@@ -538,29 +644,31 @@ inherit %
 == Interpreter
 
 Now that we have our AST, there are a few things we could do. We could
-write a compiler, either to JavaScript, or to a different language, or
-machine code. Or we could write a simple interpreter. We are going to
-do the latter, because it is a bit more interesting than compiling to
-JavaScript.
+write a compiler for [langspan::], either to JavaScript, or to a
+different language, or machine code. Or we could write __[a simple
+interpreter]. We are going to do the latter, because it is a bit more
+interesting than compiling to JavaScript (and not a pain in the ass
+like compiling to machine code).
 
 === Environment
 
-In our interpreter we will implement variables and lexical
-scoping. This means we need some kind of structure to map variable
-names to values. For this purpose we will use a simple JavaScript
-object with a `null prototype (which means it has no built-in fields
-like `toString that could interfere with symbol resolution). Then, to
-implement nested scopes, all we need to do is to call `Object.create
-on the parent environment. JS's prototype inheritance will do the rest
-for us.
+In our interpreter we will implement __variables and __[lexical
+scoping]. This means we need some kind of structure to map variable
+names to values: an __environment. For this purpose we will use a
+simple JavaScript object with a `null prototype (which means it has no
+built-in fields like `toString that could interfere with symbol
+resolution). Then, to implement nested scopes, all we need to do is to
+call `Object.create on the parent environment. JS's prototype
+inheritance will do the rest for us.
 
 So we define the `makeEnvironment function that takes an optional
 `bindings argument (for initial bindings). It will also populate the
-environment with basic functionality that we want to have in our
-language.
+environment with basic functionality that we want to have in
+langspan::~, like truth, falsehood, arithmetic... that kind of
+nonsense.
 
 inherit %
-  style = height:500px
+  style = height:600px
   repple editor ::
     language = javascript
     theme = eclipse
@@ -581,11 +689,13 @@ inherit %
              "<=": (a, b) => a <= b,
              ">=": (a, b) => a >= b,
              "==": (a, b) => a == b,
+             log: log,
              Math: Math
           });
           Object.assign(base, bindings || {});
           return base;
        }
+       log(makeEnvironment({a: 10, b: 20}));
 
 Notice that we populate the environment with some symbolic names like
 `["+"]. Operator applications like `(a + b) will use these
@@ -596,7 +706,8 @@ operators with special or short-circuiting behavior like `and~.
 === Utilities
 
 Before going any further we will write some utilities to manipulate
-the AST a bit more easily:
+the AST a bit more easily (their functionality and purpose should be
+clear enough from the comments):
 
 inherit %
   style = height:500px
@@ -631,7 +742,7 @@ inherit %
           // normalizeCall(`f(a, b)`) ==> [f, [a, b]]
           var args = extractArgs(/^[E_] [^ ]+ [E_]$/, node);
           if (args)
-              return [node.orig[1], args];
+              return [node.ops[0], args];
           else if (args = extractArgs(/^E \( [E_] \) _$/, node))
               return [args[0], getList(args[1])];
           return null;
@@ -648,24 +759,27 @@ inherit %
       }
 
 
+
+
 === Algorithm
 
-Now comes the time to write our interpreter, which will evaluate a
-source string into a value. Our interpreter will have three parameters:
+Now comes the time to write our __interpreter for [langspan::], which
+will evaluate a source string into a value. It will have two
+parameters:
 
-* A `parser to produce the AST.
+* A __[`parser] to produce the AST.
 * A mapping from node "type" (word, number, E + E, etc.) to a function
-  that handles that kind of node.
+  that handles that kind of node (__[`handlers]).
 
-One caveat for the mapping is that we will also map regular
-expressions to handlers. For instance, we may have a node of "type"
+One caveat for the mapping is that we will also map __[regular
+expressions] to handlers. For instance, we may have a node of "type"
 `[_ if X elseif X elseif X else X end _]. We will therefore want to be
 able to match an arbitrary number of `elseif. A regular expression
 will do just fine.
 
-We will define an `evalAST method on the interpreter which will take
-two arguments: an AST node, and an _environment, which is simply an
-object that maps variable names to values or functions.
+We will define an `eval method on the interpreter which will take two
+arguments: a source code string or an AST node, and the __environment
+we defined previously.
 
 inherit %
   style = height:500px
@@ -724,12 +838,11 @@ The basic handlers we need are as follows:
 
 
 inherit %
-  style = height:500px
+  style = height:1000px
   repple editor ::
     language = javascript
     theme = eclipse
     code =>
-
       // Helper functions (used by more than one handler)
       function resolve(env, text) {
          if (text in env)
@@ -898,8 +1011,9 @@ inherit %
 
 === Variables and functions
 
-Now that the basics are there, we will add the capability to define
-variables and functions, as well as simple list comprehension syntax:
+Now that the basics are there, we will add the capability to __define
+__variables and __functions, as well as simple __[list comprehension]
+syntax:
 
 + Type + Example + Description
 | `[E -> E] | `[x -> x + 1] | Anonymous function
@@ -974,7 +1088,7 @@ inherit %
       });
 
       var interpreter = new Interpreter(parser, handlers);
-      var env = makeEnvironment({a: 10, b: 20});
+      var env = makeEnvironment();
       var tests = [
          '(x -> x * x)(10)',
          '((x, y) -> x / y)(10, 2)',
@@ -986,4 +1100,56 @@ inherit %
       ]
       for (var test of tests)
          log(test, interpreter.eval(test, env));
+
+
+In conclusion, yeah, that's pretty much it. Write a conclusion.
+
+
+== Adjustments
+
+
+inherit %
+  style = height:500px
+  repple editor ::
+    language = javascript
+    theme = eclipse
+    code =>
+      Tokenizer.prototype.tokenize = function (source) {
+          var tokens = this.primTokenize(source);
+          var prevType = "op";
+          for (var token of tokens) {
+              if (token.type === "op" && prevType === "op") {
+                  prevType = "op";
+                  token.type = "prefix";
+              }
+              else
+                  prevType = token.type;
+          }
+          return tokens;
+      }
+      var testCode = '10 + -9' // change me!
+      log(testCode);
+      tokenizer.tokenize(testCode).forEach(x => log(x));
+
+
+TODO
+
+* Fix unary `[-] (fix prefix operators in general)
+* Editor for langspan::
+* JSFiddle with all the code
+* Git repository with all the code
+* Suggestions for extensions and improvements
+* Fix display for mobile
+
+
+js ::
+  $$quaintReppleInstall().then(function () {
+    var q = $$quaintReppleInstances;
+    q.forEach((x, i) => x.editor.on("submit", y => q[i + 1] ? q[i + 1].editor.submit() : null));
+
+    // var testotron = document.getElementById("testotron");
+    // var cm = CodeMirror.fromTextArea(testotron);
+    // cm.setOption("mode", "lang");
+
+  });
 
