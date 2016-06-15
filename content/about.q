@@ -40,12 +40,31 @@ check them out on [GitHub {githubi}]@@{github} or read about them here:
 
 horb :: current projects
 
+
+hpl => http://histoirespourlecteurs.com
+ow => http://outsideword.com
+
+div.project %
+  .project-title %
+    onclick = window.location = '{ow}';
+    inherit %
+      style = width:100px
+      @@@image:assets/ow.png
+    The Outside Word @@ {ow}
+  .project-description %
+    A site where my sister and I post __[short stories @@ {ow}],
+    updated every Sunday. It was made with Quaint and Earl Grey
+    (see below).
+    Also available [in French @@ {hpl}].
+
+
 earlgrey => https://breuleux.github.io/earl-grey/
 
 div.project %
   .project-title %
     onclick = window.location = '{earlgrey}';
-    @@@image:assets/earlgrey.svg
+    inherit %
+      @@@image:assets/earlgrey.svg
     Earl Grey @@ {earlgrey}
   .project-description %
     __ Earl Grey is a new programming language. @@ {earlgrey}

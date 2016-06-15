@@ -1,0 +1,403 @@
+{
+  "random.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/random.html",
+    "path": "random.html",
+    "origPath": "random.q",
+    "localUrl": "/random.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "title": "Histoire aléatoire"
+  },
+  "foundation.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/foundation.html",
+    "path": "foundation.html",
+    "origPath": "foundation.q",
+    "localUrl": "/foundation.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "His life was great! He had just obtained his diploma, a position at the Bank had been arranged for him, he'd stopped fiddling with that stupid guitar, and thanks to yours truly he even had a rich marriage prospect---a bit ugly, but that's what mistresses are for."
+    },
+    "id": "89f792cc-303e-11e6-a7a5-a3b4ddc1d485",
+    "seqid": 10,
+    "title": "The Desrosiers Foundation",
+    "summary": "\n    Tragedy befalls Mr. Desrosiers: his son took his own life. How\n    will he keep his colleagues' respect in spite of his failure as a\n    parent?",
+    "author": "Sophie Breuleux",
+    "date": "2016/06/12",
+    "tags": [
+      "<1000 words",
+      "Humor"
+    ],
+    "comments": false,
+    "highlight": true,
+    "list": true,
+    "status": "published"
+  },
+  "drumpf.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/drumpf.html",
+    "path": "drumpf.html",
+    "origPath": "drumpf.q",
+    "localUrl": "/drumpf.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "Up to this point Drumpf the Clown's life had been a perfect\ncrescendo of glory and success. He had found his place in the\nuniverse, up there with the kings of kings. And then came the\nmorning's papers and the devastating news therein."
+    },
+    "id": "0b8a29e4-00e7-11e6-9307-3fe29144648f",
+    "title": "Ambition of a Clown",
+    "summary": "\n    Outraged not to be the center of attention, Drumpf the Clown\n    decides to seek the presidency of the United States of America.",
+    "author": "Olivier Breuleux",
+    "date": "2016/06/12",
+    "tags": [
+      "1000-2000 words",
+      "Humor",
+      "Satire",
+      "Politics"
+    ],
+    "french": "drumpf",
+    "comments": false,
+    "highlight": false,
+    "list": false,
+    "status": "published"
+  },
+  "gospel.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/gospel.html",
+    "path": "gospel.html",
+    "origPath": "gospel.q",
+    "localUrl": "/gospel.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "I can't wait to see my creation washing over Rome like a typhoon,\nleading his army of the risen dead with a cerberus made out of living\nfire, mercilessly throwing Roman sinbags into the steaming acid of a\ntransmuted Tiber.",
+      "q1": "I\nstill haven't fixed the monthly leaking issue with women... but that\ncan wait.",
+      "q2": "I have always used violence as a means to my ends, and it\nhas always worked splendidly."
+    },
+    "id": "9a6c2748-fe08-11e5-a43e-837f2290d26a",
+    "seqid": 9,
+    "title": "The Gospel According to God",
+    "summary": "\n    God creates a killing machine, but His Plan does not work as\n    He expected.",
+    "author": "Olivier Breuleux",
+    "date": "2016/06/05",
+    "french": "jesus",
+    "tags": [
+      "2000-3000 words",
+      "Humor",
+      "Satire",
+      "Religion"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "deal.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/deal.html",
+    "path": "deal.html",
+    "origPath": "deal.q",
+    "localUrl": "/deal.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "As the host---ripe for botox, but who cares, this is England---beckons him to the scene, Jean Joseph reflects that this opportunity could not have come at a better time. Indeed, his electric lawn mower broke down a mere month ago ..."
+    },
+    "id": "f4426ea0-1edb-11e6-966d-03ce3ae5dce9",
+    "seqid": 8,
+    "title": "Deal or No Deal, Insipid Edition",
+    "summary": "\n    Jean Joseph Beaulieu, the most insipid man in the world, is given\n    a golden opportunity: he has been chosen to participate in the\n    famed game show, Deal or No Deal!",
+    "author": "Sophie & Olivier Breuleux",
+    "date": "2016/05/31 07:00",
+    "french": "banquier-insipide",
+    "tags": [
+      "<1000 words",
+      "Humor",
+      "The Insipid Man"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "mirror.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/mirror.html",
+    "path": "mirror.html",
+    "origPath": "mirror.q",
+    "localUrl": "/mirror.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "I sit at the bar and I order a beer. The barman gives me an\nempty glass and a five dollar bill."
+    },
+    "id": "f58abe7e-fd30-11e5-9260-033cd62eb32d",
+    "seqid": 7,
+    "title": "The Wrong Side of the Mirror",
+    "summary": "\n    As if his hangover wasn't enough, a man gets lost on the\n    other side of the mirror.",
+    "author": "Olivier Breuleux",
+    "date": "2016/05/31 06:00",
+    "french": "miroir",
+    "tags": [
+      "<1000 words",
+      "Humor",
+      "Absurd"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "breakfast.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/breakfast.html",
+    "path": "breakfast.html",
+    "origPath": "breakfast.q",
+    "localUrl": "/breakfast.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "Intoxicating aromas waft around, searching for noses,\nfrom the foods that scarlet demons bring diligently, coming out of\nopenings in the wall that close behind them ..."
+    },
+    "id": "66d9613a-fd30-11e5-9354-c7f15a5ebe4e",
+    "seqid": 6,
+    "title": "Breakfast at Satan's",
+    "summary": "\n    Lobster omelettes, crepes and maple syrup, exotic fruits:\n    what won't you eat?",
+    "author": "Olivier Breuleux",
+    "date": "2016/05/31 05:00",
+    "french": "dejeuner",
+    "tags": [
+      "1000-2000 words",
+      "Other"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "danger.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/danger.html",
+    "path": "danger.html",
+    "origPath": "danger.q",
+    "localUrl": "/danger.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "... the universe conspires to make my every move into a deadly circumstance, as if every little thing I do sets into motion the dominoes of someone else's fate."
+    },
+    "id": "5e0b80d0-fd0b-11e5-9d24-f3f0dfd0a123",
+    "seqid": 5,
+    "title": "I Am Dangerous",
+    "summary": "\n    The most dangerous man in the world reflects on their curse.",
+    "author": "Olivier Breuleux",
+    "date": "2016/05/31 02:00",
+    "french": "danger",
+    "tags": [
+      "<1000 words",
+      "Dark",
+      "Other"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "sick-leave.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/sick-leave.html",
+    "path": "sick-leave.html",
+    "origPath": "sick-leave.q",
+    "localUrl": "/sick-leave.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "I found a warm cup full of the revolting narcotic in the break\nroom, and took it to my least annoying colleague, Mr. Young. But he\nwas not there! How odd!"
+    },
+    "id": "9563b4f4-011f-11e6-9384-d3ebdc3d721e",
+    "seqid": 4,
+    "title": "The Mystery of the Sick Leave",
+    "summary": "\n    Anatole Lafeuille, an amateur detective who is as scornful as he\n    is incompetent, investigates his colleague's absence at work.",
+    "author": "Sophie Breuleux",
+    "date": "2016/05/31 01:00",
+    "french": "conge-maladie",
+    "tags": [
+      "<1000 words",
+      "Humor",
+      "Anatole"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "insipid.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/insipid.html",
+    "path": "insipid.html",
+    "origPath": "insipid.q",
+    "localUrl": "/insipid.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "None of this, however, applies to Jean Joseph Beaulieu, who has a rare talent: each impression he makes is equal to the first, and just as quickly forgotten. He is like a ghost. A really, really boring ghost."
+    },
+    "id": "f96e8564-1d49-11e6-8291-379485b01d4a",
+    "seqid": 3,
+    "title": "The Insipid Man",
+    "summary": "\n    Out of supplies for paint by numbers, the most boring man in the\n    world has to find a new hobby.",
+    "author": "Sophie Breuleux",
+    "date": "2016/05/31 01:00",
+    "french": "insipide",
+    "tags": [
+      "<1000 words",
+      "Humor",
+      "The Insipid Man"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "dyson.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/dyson.html",
+    "path": "dyson.html",
+    "origPath": "dyson.q",
+    "localUrl": "/dyson.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "Djvooooooommmmmmm! The Great Dyson's coming! He rolls up to us and waves with his long arm that ends with a hand dryer and no one says nothing."
+    },
+    "id": "8d28bf0c-1d4c-11e6-9abd-5ffdc209eebb",
+    "seqid": 2,
+    "title": "The Great Dyson",
+    "summary": "\n    In a world dominated by Dyson's sentient, omnipotent vacuum\n    cleaners, a little boy zealously attends the weekly purge.",
+    "author": "Sophie Breuleux",
+    "date": "2016/05/31 01:00",
+    "french": "dyson",
+    "tags": [
+      "<1000 words",
+      "Humor",
+      "Absurd",
+      "Dystopia"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "wheel.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/wheel.html",
+    "path": "wheel.html",
+    "origPath": "wheel.q",
+    "localUrl": "/wheel.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "But that idea was everything he had! His very identity as a\nwheel maker had slipped through his fingers and the void was so great\nthat he felt he could never become whole again."
+    },
+    "id": "a0fecd8a-fd14-11e5-92d6-b7a0dd62ed80",
+    "seqid": 1,
+    "title": "The Wheel Maker",
+    "summary": "\n    Grompf, proud inventor of the wheel, must reinvent himself.",
+    "author": "Olivier Breuleux",
+    "date": "2016/05/31 00:00",
+    "french": "roue",
+    "tags": [
+      "2000-3000 words",
+      "Other"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "nightmare.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/nightmare.html",
+    "path": "nightmare.html",
+    "origPath": "nightmare.q",
+    "localUrl": "/nightmare.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "Who knows what I would see if I pulled them open?\nThe shockwave of an atomic mushroom, rolling toward me? Medusa's\npetrifying stare? Or perhaps a hooded man with a gun pointed at\nme... BLAM!"
+    },
+    "id": "6319f0e8-1d4f-11e6-bfc1-478592c22aa4",
+    "title": "Matryoshka Nights",
+    "summary": "\n    A man desperately tries to tell his nightmares apart from reality.",
+    "author": "Olivier Breuleux",
+    "date": "2016/05/29",
+    "tags": [
+      "1000-2000 words",
+      "Horror",
+      "Drama"
+    ],
+    "comments": true,
+    "highlight": false,
+    "list": false,
+    "status": "published"
+  },
+  "about.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/about.html",
+    "path": "about.html",
+    "origPath": "about.q",
+    "localUrl": "/about.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "title": "About Us",
+    "author": "Olivier Breuleux",
+    "date": "2016/05/22",
+    "french": "apropos"
+  },
+  "index.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/index.html",
+    "path": "index.html",
+    "origPath": "index.q",
+    "localUrl": "/index.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "title": "The Outside Word",
+    "summary": "Short stories, updated every Sunday",
+    "author": "Olivier Breuleux",
+    "date": "2016/02/13",
+    "french": "index"
+  }
+}
