@@ -1,0 +1,3 @@
+#!/bin/sh
+cp -rp content/assets/ out/blog
+aws s3 sync out/blog s3://breuleux.net/blog
