@@ -11,6 +11,221 @@
     "resourceRel": "resources",
     "title": "Histoire aléatoire"
   },
+  "treasure.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/treasure.html",
+    "path": "treasure.html",
+    "origPath": "treasure.q",
+    "localUrl": "/treasure.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "id": "6e20a4aa-516b-11e6-bcb3-b704418257f2",
+    "title": "The Painter's Treasure",
+    "summary": "\n    A man tries to uncover renowned painter Willem van Houten's hidden\n    treasure.",
+    "author": "Olivier Breuleux",
+    "date": "2016/07/24",
+    "tags": [
+      "TAG"
+    ],
+    "comments": true,
+    "highlight": false,
+    "list": false,
+    "status": "wip"
+  },
+  "gravity.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/gravity.html",
+    "path": "gravity.html",
+    "origPath": "gravity.q",
+    "localUrl": "/gravity.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "The young scientists who at that moment were\nsciencing in the park looked up from their beakers, barometers and\nother spectroscopic instruments ..."
+    },
+    "id": "754c6e10-2c47-11e6-ada5-839fb381a3c3",
+    "seqid": 15,
+    "title": "The Tyranny of Gravity",
+    "summary": "\n    A mad scientist decides to tackle humanity's most insidious enemy: the force of gravity.",
+    "author": "Olivier Breuleux",
+    "date": "2016/07/24",
+    "tags": [
+      "Humor",
+      "Absurd"
+    ],
+    "comments": false,
+    "highlight": true,
+    "list": true,
+    "status": "published"
+  },
+  "picnic.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/picnic.html",
+    "path": "picnic.html",
+    "origPath": "picnic.q",
+    "localUrl": "/picnic.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "id": "56be95f4-5127-11e6-832c-a743713bbbd4",
+    "title": "The Picnic",
+    "summary": "\n    SUMMARY",
+    "author": "Olivier Breuleux",
+    "date": "2016/07/23",
+    "tags": [
+      "TAG"
+    ],
+    "comments": true,
+    "highlight": false,
+    "list": false,
+    "status": "draft"
+  },
+  "goeland.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/goeland.html",
+    "path": "goeland.html",
+    "origPath": "goeland.q",
+    "localUrl": "/goeland.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "id": "24704882-510d-11e6-ac78-7ff71e35b0eb",
+    "title": "Gontran Goeland's Masterpiece",
+    "summary": "\n    Great Belgian Gontran Goeland has been murdered!",
+    "author": "Olivier Breuleux",
+    "date": "2016/07/23",
+    "tags": [
+      "Mystery"
+    ],
+    "comments": true,
+    "highlight": false,
+    "list": false,
+    "status": "wip"
+  },
+  "salad.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/salad.html",
+    "path": "salad.html",
+    "origPath": "salad.q",
+    "localUrl": "/salad.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "She looks around, but in her state of panic, she can only see lasagnas."
+    },
+    "id": "159abf1a-4be3-11e6-a986-5f1a59abe65c",
+    "seqid": 14,
+    "title": "The Chef's Salad",
+    "summary": "\n    An anxious woman lives a crisis when she learns the local deli is all out of her favourite dish.",
+    "author": "Sophie Breuleux",
+    "date": "2016/07/17",
+    "french": "salade",
+    "tags": [
+      "<1000 words",
+      "Humor"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "ronald.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/ronald.html",
+    "path": "ronald.html",
+    "origPath": "ronald.q",
+    "localUrl": "/ronald.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "Up to this point Ronald the Clown's life had been a perfect\ncrescendo of glory and success. He had found his place in the\nuniverse, up there with the kings of kings. But then came the\nmorning's papers and the devastating news therein."
+    },
+    "id": "0b8a29e4-00e7-11e6-9307-3fe29144648f",
+    "seqid": 13,
+    "title": "Ambition of a Clown",
+    "summary": "\n    Outraged not to be the center of attention, Ronald the Clown\n    decides to seek the presidency of the United States of America.",
+    "author": "Olivier Breuleux",
+    "date": "2016/07/10",
+    "tags": [
+      "2000-3000 words",
+      "Humor",
+      "Satire",
+      "Politics"
+    ],
+    "french": "drumpf",
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "dungeon.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/dungeon.html",
+    "path": "dungeon.html",
+    "origPath": "dungeon.q",
+    "localUrl": "/dungeon.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "I yearn for tears, but all I can do is wilt and now the lights are dimming. When the night falls and he takes me, he takes a bit, and then more."
+    },
+    "id": "34f76308-40c2-11e6-bd47-bfc18dbe507a",
+    "seqid": 12,
+    "title": "Dracula's Dungeon",
+    "summary": "\n    Imprisoned in Dracula's dungeon, a young woman\n    seeks to escape.",
+    "author": "Sophie Breuleux",
+    "date": "2016/07/03",
+    "french": "donjon",
+    "tags": [
+      "<1000 words",
+      "Horror"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
+  "nightmare.q": {
+    "hostname": "http://outsideword.com",
+    "url": "http://outsideword.com/nightmare.html",
+    "path": "nightmare.html",
+    "origPath": "nightmare.q",
+    "localUrl": "/nightmare.html",
+    "siteRoot": "/",
+    "siteRel": ".",
+    "resourceRoot": "/resources",
+    "resourceRel": "resources",
+    "quotes": {
+      "front": "Who knows what I would see if I pulled them open?\nThe shockwave of an atomic mushroom, rolling toward me? Medusa's\npetrifying stare? Or perhaps a hooded man with a gun pointed at\nme... BLAM!"
+    },
+    "id": "6319f0e8-1d4f-11e6-bfc1-478592c22aa4",
+    "seqid": 11,
+    "title": "Matryoshka Nights",
+    "summary": "\n    A man desperately tries to tell his nightmares apart from reality.",
+    "author": "Olivier Breuleux",
+    "date": "2016/06/19",
+    "tags": [
+      "1000-2000 words",
+      "Horror",
+      "Drama"
+    ],
+    "comments": false,
+    "highlight": false,
+    "list": true,
+    "status": "published"
+  },
   "foundation.q": {
     "hostname": "http://outsideword.com",
     "url": "http://outsideword.com/foundation.html",
@@ -35,38 +250,8 @@
       "Humor"
     ],
     "comments": false,
-    "highlight": true,
-    "list": true,
-    "status": "published"
-  },
-  "drumpf.q": {
-    "hostname": "http://outsideword.com",
-    "url": "http://outsideword.com/drumpf.html",
-    "path": "drumpf.html",
-    "origPath": "drumpf.q",
-    "localUrl": "/drumpf.html",
-    "siteRoot": "/",
-    "siteRel": ".",
-    "resourceRoot": "/resources",
-    "resourceRel": "resources",
-    "quotes": {
-      "front": "Up to this point Drumpf the Clown's life had been a perfect\ncrescendo of glory and success. He had found his place in the\nuniverse, up there with the kings of kings. And then came the\nmorning's papers and the devastating news therein."
-    },
-    "id": "0b8a29e4-00e7-11e6-9307-3fe29144648f",
-    "title": "Ambition of a Clown",
-    "summary": "\n    Outraged not to be the center of attention, Drumpf the Clown\n    decides to seek the presidency of the United States of America.",
-    "author": "Olivier Breuleux",
-    "date": "2016/06/12",
-    "tags": [
-      "1000-2000 words",
-      "Humor",
-      "Satire",
-      "Politics"
-    ],
-    "french": "drumpf",
-    "comments": false,
     "highlight": false,
-    "list": false,
+    "list": true,
     "status": "published"
   },
   "gospel.q": {
@@ -339,34 +524,6 @@
     "comments": false,
     "highlight": false,
     "list": true,
-    "status": "published"
-  },
-  "nightmare.q": {
-    "hostname": "http://outsideword.com",
-    "url": "http://outsideword.com/nightmare.html",
-    "path": "nightmare.html",
-    "origPath": "nightmare.q",
-    "localUrl": "/nightmare.html",
-    "siteRoot": "/",
-    "siteRel": ".",
-    "resourceRoot": "/resources",
-    "resourceRel": "resources",
-    "quotes": {
-      "front": "Who knows what I would see if I pulled them open?\nThe shockwave of an atomic mushroom, rolling toward me? Medusa's\npetrifying stare? Or perhaps a hooded man with a gun pointed at\nme... BLAM!"
-    },
-    "id": "6319f0e8-1d4f-11e6-bfc1-478592c22aa4",
-    "title": "Matryoshka Nights",
-    "summary": "\n    A man desperately tries to tell his nightmares apart from reality.",
-    "author": "Olivier Breuleux",
-    "date": "2016/05/29",
-    "tags": [
-      "1000-2000 words",
-      "Horror",
-      "Drama"
-    ],
-    "comments": true,
-    "highlight": false,
-    "list": false,
     "status": "published"
   },
   "about.q": {
