@@ -2,7 +2,7 @@
 template :: plain
 
 meta ::
-  title = Olivier Breuleux's blog
+  title = Olivier Breuleux's Blog
   author = Olivier Breuleux
 
 ornate :: 131
@@ -35,6 +35,8 @@ ul.articles %
           moment{data.date, "YYYY/MM/DD"}.format{"MM/YYYY"}
         }
         span.tagline % {data.tagline}
+
+#shortstories %
 
 horb :: short stories
 
