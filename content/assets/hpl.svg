@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="441.20483"
+   height="414.51273"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="hpl-textbg.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="855.72476"
+     inkscape:cy="-95.477058"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3270"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(537.89008,-32.765167)">
+    <g
+       id="g3270"
+       transform="translate(-340,-320)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3950"
+         d="m 28.48661,374.45982 -63.500003,109.96875 c 18.870093,-7.85508 43.290773,-12.3178 69.593753,-11.71875 21.21374,0.48314 40.64796,4.18013 56.5,10.15625 L 28.48661,374.45982 z m -96.000003,166.28125 -16.0625,27.8125 -35.031247,60.65625 4.8125,0 0,53.125 48.249997,0 0,-53.125 36.15625,0 0,133.4375 29.125003,0 0,-131.6875 c 3.52893,-0.58041 7.43681,-1.09571 11.75,-1.53125 4.50919,-0.43527 9.022,-0.72973 13.53125,-0.875 4.50917,-0.29014 8.93678,-0.47973 13.25,-0.625 4.31311,-0.145 8.13579,-0.21861 11.46875,-0.21875 23.13416,1.4e-4 41.06895,3.54474 53.8125,10.65625 12.74331,6.96662 19.09361,18.44145 19.09375,34.40625 -1.4e-4,16.11011 -6.46689,27.77454 -19.40625,35.03125 -12.74355,7.11169 -30.87998,10.68755 -54.40625,10.6875 l -12.9375,0 0,44.15625 109.15625,0 0,-133.4375 30.53125,0 -35.03125,-60.65625 -14.6875,-25.4375 c -15.27646,20.44335 -55.07669,34.56506 -100.46875,33.53125 -43.83492,-0.99834 -80.060183,-15.8584 -92.906253,-35.90625 z m 249.031253,98.78125 0,102.25 59.03125,0 -59.03125,-102.25 z m -127.6875,11.46875 c -2.15665,1.1e-4 -5.17276,0.0737 -9.09375,0.21875 -3.72506,1.1e-4 -6.68722,0.14734 -8.84375,0.4375 l 0,43.53125 14.71875,0 c 11.56705,7e-5 20.27457,-1.66181 26.15625,-5 5.88149,-3.48317 8.84365,-9.35219 8.84375,-17.625 -1e-4,-7.83722 -2.96226,-13.36941 -8.84375,-16.5625 -5.68562,-3.338 -13.33098,-4.99989 -22.9375,-5 z m -203.78125,32.53125 -45.6875,79.125 45.6875,0 0,-79.125 z m 36.15625,21.03125 0,58.09375 48.249997,0 0,-58.09375 -48.249997,0 z"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <path
+         sodipodi:type="arc"
+         style="fill:#000000;fill-opacity:1;stroke:none"
+         id="path3954"
+         sodipodi:cx="317.69296"
+         sodipodi:cy="410.41025"
+         sodipodi:rx="51.012703"
+         sodipodi:ry="51.012703"
+         d="m 266.82598,406.5572 c 2.12798,-28.09306 26.62697,-49.14191 54.72003,-47.01393 28.09306,2.12798 49.14191,26.62697 47.01393,54.72003 -2.12797,28.09305 -26.62697,49.14191 -54.72003,47.01393 -27.13047,-2.05507 -47.87312,-25.04093 -47.14119,-52.23927"
+         sodipodi:start="3.2171958"
+         sodipodi:end="9.4516822"
+         sodipodi:open="true"
+         transform="translate(-287.70485,114.25598)" />
+    </g>
+  </g>
+</svg>
