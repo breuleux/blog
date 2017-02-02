@@ -41,6 +41,10 @@
         "table-header": "#000"
       }
     },
+    "emoji": {
+      "method": "svg",
+      "fuzzy": true
+    },
     "repple": {}
   },
   "inject": [],
